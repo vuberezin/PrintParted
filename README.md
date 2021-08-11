@@ -3,7 +3,7 @@
 
 # *Building a Dynamically Linked Version*
 *1.For Ubuntu,Debian you need to install:  sudo apt-get install libparted-dev*<br />
-*For Red Hat,Centos,Fedora:  yum install parted-dev(for libparted)*<br /> 
+*for Red Hat,Centos,Fedora:  yum install parted-dev(for libparted)*<br /> 
 *2.Extract the tarball*<br />
 *3.Run the following commands:*<br />
 >*qmake PrintParted.pro*<br />
