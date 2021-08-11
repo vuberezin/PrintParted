@@ -18,7 +18,7 @@
 */
 
 
-#include "parttablemodel.h"
+#include "include/parttablemodel.h"
 #include <QApplication>
 
 
