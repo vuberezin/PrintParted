@@ -7,5 +7,5 @@
 *2.Extract the tarball*<br />
 *3.Run the following commands:*<br />
 >*qmake PrintParted.pro*<br />
->*make*<br />
+>*make*<br /> <
 *This is create file: PrintParted*
