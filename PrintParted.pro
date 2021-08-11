@@ -17,38 +17,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 LIBS += -lparted
 
-SOURCES += \
-    chart.cpp \
-    comboboxmodel.cpp \
-    dialog.cpp \
-    disk.cpp \
-    disktablemodel.cpp \
-    freespace.cpp \
-    freespacemodel.cpp \
-    main.cpp \
-    part.cpp \
-    parttablemodel.cpp \
-    widget.cpp
+SOURCES += src/*.cpp
 
-HEADERS += \
-    chart.h \
-    comboboxmodel.h \
-    dialog.h \
-    disk.h \
-    disktablemodel.h \
-    freespace.h \
-    freespacemodel.h \
-    part.h \
-    parttablemodel.h \
-    widget.h
 
-FORMS += \
-    widget.ui
+HEADERS += include/*.h
+
+FORMS += forms/*.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-RESOURCES += \
-    resources.qrc
+RESOURCES += resources/*.qrc
