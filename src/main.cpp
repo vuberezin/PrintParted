@@ -18,8 +18,8 @@
 */
 
 
-#include "widget.h"
-#include "part.h"
+#include "include/widget.h"
+#include "include/part.h"
 #include <unistd.h>
 #include <sys/types.h>
 #include <QApplication>
