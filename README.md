@@ -8,3 +8,4 @@
 *3.Run the following commands:*<br />
 >*qmake PrintParted.pro*<br />
 >*make*<br />
+*This is create file: PrintParted*
