@@ -6,5 +6,5 @@ PrintParted is a program for viewing the disk partition table without disk opera
 For Red Hat,Centos,Fedora:  yum install parted-dev<br /> 
 2.Extract the tarball<br />
 3.Run the following commands:<br />
- qmake PrintParted.pro<br />
- make<br />
+qmake PrintParted.pro<br />
+make<br />
