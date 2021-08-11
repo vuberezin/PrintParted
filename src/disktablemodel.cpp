@@ -18,8 +18,8 @@
 */
 
 
-#include "disktablemodel.h"
-#include "disk.h"
+#include "include/disktablemodel.h"
+#include "include/disk.h"
 #include <QApplication>
 
 DiskTableModel::DiskTableModel(QObject *parent) :
