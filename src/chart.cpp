@@ -18,7 +18,7 @@
 */
 
 
-#include "chart.h"
+#include "include/chart.h"
 
 
 DataChart::DataChart( DataParted *dataParted, DiskData *diskData, DataFreespace *dataFreespace, int index)
