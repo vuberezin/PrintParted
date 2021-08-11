@@ -18,8 +18,8 @@
 */
 
 
-#include "comboboxmodel.h"
-#include "part.h"
+#include "include/comboboxmodel.h"
+#include "include/part.h"
 #include <QModelIndex>
 #include <QDebug>
 
