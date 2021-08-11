@@ -18,7 +18,7 @@
 */
 
 
-#include "dialog.h"
+#include "include/dialog.h"
 
 
 Dialog::Dialog(QWidget *parent, DataParted *dataParted, DiskData *diskdata, DataFreespace *dataFreespace, int index) :
