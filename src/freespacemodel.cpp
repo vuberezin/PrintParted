@@ -18,7 +18,7 @@
 */
 
 
-#include "freespacemodel.h"
+#include "include/freespacemodel.h"
 #include <QApplication>
 
 
