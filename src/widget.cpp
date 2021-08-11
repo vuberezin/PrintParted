@@ -19,9 +19,9 @@
 
 
 #include <QtGui>
-#include "widget.h"
 #include <QGridLayout>
-#include "freespace.h"
+#include "include/widget.h"
+#include "include/freespace.h"
 
 
 Widget::Widget(QWidget *parent) :
