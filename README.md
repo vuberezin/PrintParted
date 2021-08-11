@@ -6,5 +6,5 @@
 *For Red Hat,Centos,Fedora:  yum install parted-dev(for libparted)*<br /> 
 *2.Extract the tarball*<br />
 *3.Run the following commands:*<br />
->qmake PrintParted.pro<br />
->make<br />
+>*qmake PrintParted.pro*<br />
+>*make*<br />
