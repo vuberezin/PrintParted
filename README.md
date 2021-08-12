@@ -13,4 +13,4 @@
 >*__make__* <br /> 
 >*and find the file: PrintParted*<br />
 
-*Alternatively, you can use Makefile with following command: make*<br /> 
+*Alternatively, you can use previously created Makefile with following command: make*<br /> 
