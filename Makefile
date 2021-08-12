@@ -26,7 +26,7 @@ OBJECTS  := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 all: build $(APP_DIR)/$(TARGET)
 
 # generate ui_widget.h
-$(INC_DIR)/ui_widget.h: src/widget.ui
+$(INC_DIR)/ui_widget.h: forms/widget.ui
 	$(UIC) $< -o $@
 
 # compile all cpp source files
