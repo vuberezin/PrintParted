@@ -12,5 +12,5 @@
 >*__qmake PrintParted.pro__*<br />
 >*__make__*<br /> 
 >*and find the file: PrintParted*<br />
-*Alternatively, you can use Makefile with following command:*<br />
+<br>*Alternatively, you can use Makefile with following command:*<br />
 >*__make__*<br /> 
