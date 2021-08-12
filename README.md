@@ -4,7 +4,7 @@
 
 # *Basic Functionality*
 
-*This contains two tables with description disks and partitions of each disk. Pie chart contains information about disk partitions and freespace <br /> 
+*This contains two tables with description disks and partitions of each disk. Pie chart contains information about disk partitions and freespace* <br /> 
 *of each disk if the partition is more than 0.8 percent*<br /> 
 
 # *Building a Dynamically Linked Version*
