@@ -8,6 +8,6 @@
 *__yum install qt5__*<br /> 
 *2.Extract the tarball*<br />
 *3.Run the following commands:*<br />
->*qmake PrintParted.pro*<br />
->*make*<br /> 
+>*__qmake PrintParted.pro__*<br />
+>*__make__*<br /> 
 *and find the file: PrintParted*
