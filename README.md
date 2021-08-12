@@ -10,7 +10,7 @@
 *2.Extract the tarball*<br />
 *3.Run the following commands:*<br />
 >*__qmake PrintParted.pro__*<br />
->*__make__*< <br /> 
+>*__make__* <br /> 
 >*and find the file: PrintParted*<br />
 
 *Alternatively, you can use Makefile with following command:*<br />
