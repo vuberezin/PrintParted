@@ -12,10 +12,10 @@
 # *Building a Dynamically Linked Version*
 
 *Using qt5-qmake to create Makefile*<br />
-*1.For Ubuntu,Debian you need to install: sudo apt-get install libparted-dev*<br />
-*sudo apt-get install qt5-default*<br /> 
-*for Red Hat,Centos,Fedora:  yum install parted-dev (for libparted)*<br />
-*yum install qt5*<br /> 
+*1.For Ubuntu,Debian you need to install: `sudo apt-get install libparted-dev`*<br />
+*`sudo apt-get install qt5-default`*<br /> 
+*for Red Hat,Centos,Fedora:  `yum install parted-dev` (for libparted)*<br />
+*`yum install qt5`*<br /> 
 *2.Extract the tarball*<br />
 *3.Run the following commands:*<br />
 >*__qmake PrintParted.pro__*<br />
