@@ -5,9 +5,8 @@
 
 # *Basic Functionality*
 
-*This contains two tables with description disks and partitions of each disk. Pie chart contains information about disk *<br /> 
-*partitions and freespace of each disk if the partition is more than 0.8 percent. In this case freespace means space outside *<br /> 
-*of already generated partitions *<br /> 
+*This contains two tables with description disks and partitions of each disk. Pie chart contains information about disk*<br /> 
+*partitions and freespace of each disk if the partition is more than 0.8 percent. In this case freespace means space outside of already generated partitions*
 
 
 # *Building a Dynamically Linked Version*
