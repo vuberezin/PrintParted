@@ -5,17 +5,16 @@
 
 # *Basic Functionality*
 
-*This contains two tables with description disks and partitions of each disk. Pie chart contains information about disk partitions*<br /> 
-*and freespace of each disk if the partition is more than 0.8 percent. In this case freespace means space outside
-of already generated partitions*<br /> 
+*This contains two tables with description disks and partitions of each disk. Pie chart contains information about disk partitions and freespace*<br /> 
+*of each disk if the partition is more than 0.8 percent. In this case, freespace means space outside of already generated partitions and can be used to expand existing partition*<br /> 
 
 
 # *Building a Dynamically Linked Version*
 
 *Using qt5-qmake to create Makefile*<br />
-*1.For Ubuntu,Debian you need to install: `sudo apt-get install libparted-dev`*<br />
+*1.For Ubuntu, Debian you need to install: `sudo apt-get install libparted-dev`*<br />
 *`sudo apt-get install qt5-default`*<br /> 
-*for Red Hat,Centos,Fedora:  `yum install parted-dev` (for libparted)*<br />
+*for Red Hat, Centos, Fedora:  `yum install parted-dev` (for libparted)*<br />
 *`yum install qt5`*<br /> 
 *2.Extract the tarball*<br />
 *3.Run the following commands:*<br />
