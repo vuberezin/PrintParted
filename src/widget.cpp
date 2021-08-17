@@ -139,13 +139,14 @@ void Widget::createSplash(QString str)
     splash->show();
     Qt::Alignment bottonleft = Qt::AlignLeft | Qt::AlignBottom;
 
-    QString message = QObject::tr("============================================================")
-            + '\n' +  QObject::tr("This is program for viewing table of disk partitions")
-            + '\n' +  QObject::tr("============================================================")
-            + '\n' +  QObject::tr("License: GPL2")
-            + '\n' +  QObject::tr("Contact: berezin-v.u@yandex.ru")
-            + '\n' +  QObject::tr("All rights reserved. 01.08.2021 year. ");
-    splash->showMessage(message + QChar(0x00A9), bottonleft, Qt::lightGray);
+    QString message = 
+       QObject::tr(" PrintParted is a program for viewing the disk partition table without disk operations. Disk\n"
+                   " partitions and freespace are shown in a pie chart using the Qt-5.15 framework. Freespace means\n"
+                   " space outside of already generated partitions and can be used to expand existing partition\n"
+                   " or create new one.")
+                   +  QObject::tr(" It can be used under the GPLv2")
+                   +  QObject::tr(" Contact for more information: berezin-v.u@yandex.ru\n"); 
+    splash->showMessage(message, bottonleft, Qt::lightGray);
 
 }
 
