@@ -101,7 +101,7 @@ void Widget::clickedAction(int index)
     dataChart->series->setPieSize(0.6);
     chartView->chart()->addSeries(dataChart->series);
     chartView->chart()->setTitle("Disk Partitions");
-    chartView->resize(1278, 280);
+    /*chartView->resize(1278, 280);*/
 
 //------------------------------------------------------------------------------------------------
     /*dialog = new Dialog(this, dataParted, diskData, index);
