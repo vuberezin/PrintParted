@@ -144,7 +144,7 @@ void Widget::createSplash(QString str)
                    " partitions and freespace are shown in a pie chart using the Qt-5.15 framework. Freespace means\n"
                    " space outside of already generated partitions and can be used to expand existing partition\n"
                    " or create new one.")
-                   +  QObject::tr(" It can be used under the GPLv2")
+                   +  QObject::tr(" It can be used under the GPLv2\n")
                    +  QObject::tr(" Contact for more information: berezin-v.u@yandex.ru\n"); 
     splash->showMessage(message, bottonleft, Qt::lightGray);
 
