@@ -59,3 +59,4 @@ g++  -o QPrintParted3 chart.o comboboxmodel.o dialog.o disk.o disktablemodel.o f
 qrc_resources.o moc_disktablemodel.o moc_freespacemodel.o moc_parttablemodel.o moc_widget.o \
 -lparted /usr/lib/x86_64-linux-gnu/libQt5Charts.so /usr/lib/x86_64-linux-gnu/libQt5Widgets.so \
 /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Core.so /usr/lib/x86_64-linux-gnu/libGL.so -lpthread  
+
