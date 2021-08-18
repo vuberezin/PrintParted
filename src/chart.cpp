@@ -38,8 +38,7 @@ void DataChart::chartData(DataParted *dataParted, DiskData *diskData, DataFreesp
 
     series = new QPieSeries();
     series->setHoleSize(0.35);
-    series = new QtCharts::QPieSeries();
-    series->setHoleSize(0.35);
+
     vecChart = new vector<vector<string>*>();
     vecChart = dataParted->vecSave;
 
