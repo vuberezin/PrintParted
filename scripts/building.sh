@@ -55,6 +55,7 @@ g++ -c -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC -DQT_DEPRECATED_WARNING
 -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ \
 -o parttablemodel.o ../PrintParted/parttablemodel.cpp
 
+#################################################################################################################################################################################
 g++  -o PrintParted chart.o comboboxmodel.o dialog.o disk.o disktablemodel.o freespace.o freespacemodel.o main.o part.o parttablemodel.o widget.o \
 qrc_resources.o moc_disktablemodel.o moc_freespacemodel.o moc_parttablemodel.o moc_widget.o \
 -lparted /usr/lib/x86_64-linux-gnu/libQt5Charts.so /usr/lib/x86_64-linux-gnu/libQt5Widgets.so \
