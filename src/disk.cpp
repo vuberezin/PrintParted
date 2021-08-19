@@ -27,8 +27,6 @@ DiskData::DiskData()
     PedDevice *current_dev = NULL;
     PedDisk *disk = NULL;
     PedPartition *part = NULL;
-    vecDisk = new vector<string>();
-    vecSave = new vector<vector<string>*>();
     diskType = new map<int, string>();
     diskType->emplace(0, "unknown");    diskType->emplace(1, "scsi");
     diskType->emplace(2, "ide");        diskType->emplace(3, "dac960");
@@ -44,11 +42,10 @@ DiskData::DiskData()
 
     ped_device_probe_all();
     while ((current_dev = ped_device_get_next(current_dev))){
+
          vecDisk = diskInfo(current_dev, disk);
-         vecSave->push_back(vecDisk);
-
+         vecSave.push_back(vecDisk);
       }
-
 }
 
 string DiskData::diskFlags (PedDisk const *disk)
@@ -85,7 +82,7 @@ string DiskData::diskFlags (PedDisk const *disk)
 }
 
 
-vector<string>* DiskData::diskInfo (const PedDevice *dev, const PedDisk *disk)
+vector<string> DiskData::diskInfo (const PedDevice *dev, const PedDisk *disk)
 {
 
     char* start = ped_unit_format (dev, 0);
@@ -96,57 +93,56 @@ vector<string>* DiskData::diskInfo (const PedDevice *dev, const PedDisk *disk)
     disk = ped_disk_new((PedDevice*)dev);
     const char* pt_name;
     const char *disk_flags;
-    vecTemp = new vector<string>();
-    vecTemp->push_back(dev->path);
-    vecTemp->push_back(dev->model);
+    vector<string> vecTemp;
+    vecTemp.push_back(dev->path);
+    vecTemp.push_back(dev->model);
 
     map<int, string>::iterator it = diskType->begin();
     for (; it != diskType->end(); it++){
 
     if(it->first == dev->type){
 
-        vecTemp->push_back(it->second);
+        vecTemp.push_back(it->second);
     }
     }
-    vecTemp->push_back(end);
+    vecTemp.push_back(end);
 
     string log_sect_size;
     log_sect_size = toString(dev->sector_size);
-    vecTemp->push_back(log_sect_size);
+    vecTemp.push_back(log_sect_size);
 
     string phys_sector_size;
     phys_sector_size = toString(dev->phys_sector_size);
-    vecTemp->push_back(phys_sector_size);
+    vecTemp.push_back(phys_sector_size);
 
     string dev_length;
     dev_length = toString(dev->length);
-    vecTemp->push_back(dev_length);
+    vecTemp.push_back(dev_length);
 
     if (disk){
 
         pt_name = disk->type->name;
-        vecTemp->push_back(pt_name);
+        vecTemp.push_back(pt_name);
 
     } else {
 
-        vecTemp->push_back(" - ");
+        vecTemp.push_back(" - ");
     }
 
     if(disk && !(ped_disk_is_flag_available(disk, PED_DISK_CYLINDER_ALIGNMENT))){
 
         disk_flags = diskFlags(disk).c_str();
-        vecTemp->push_back(disk_flags);
+        vecTemp.push_back(disk_flags);
 
     } else {
 
-        vecTemp->push_back(" - ");
+        vecTemp.push_back(" - ");
     }
 
 
     free (start);
     free (end);
     return vecTemp;
-
 }
 
 string DiskData::toString(long long x)
@@ -156,4 +152,9 @@ string DiskData::toString(long long x)
     stream << x;
     str = stream.str();
     return str;
+}
+
+DiskData::~DiskData()
+{
+    delete diskType;
 }
