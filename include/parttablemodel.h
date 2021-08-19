@@ -42,7 +42,7 @@ public:
     DataParted *dataParted;
     QDateTime *dTime;
     QPair<QString, QString> message;
-    vector<vector<string>*> dataVec;
+    vector<vector<string>> dataVec;
     QList<QString> dataList;
     int listSize;
     int col;
@@ -52,7 +52,7 @@ public:
     QVariant headerData(int part, Qt::Orientation orient, int role) const;
     QPair<QString,QString> addData(int i);
 
-
+    ~TableModel();
 };
 
 
