@@ -30,14 +30,14 @@ Dialog::Dialog(QWidget *parent, DataParted *dataParted, DiskData *diskdata, Data
     chartView = new QChartView();
     label = new QLabel;
     label->setWordWrap(true);
-    label->setText("Disk: " + QString::fromStdString(diskdata->vecSave->at(index)->at(0)) +
-                    "\n" + "Model: " + QString::fromStdString(diskdata->vecSave->at(index)->at(1)) +
-                    "\n" + "Type: " + QString::fromStdString(diskdata->vecSave->at(index)->at(2)) +
-                    "\n" + "Size: " + QString::fromStdString(diskdata->vecSave->at(index)->at(3)) +
-                    "\n" + "Logical sector size: " + QString::fromStdString(diskdata->vecSave->at(index)->at(4)) + "B" +
-                    "\n" + "Physical sector size: " + QString::fromStdString(diskdata->vecSave->at(index)->at(5)) + "B" +
-                    "\n" + "Partition Table: " + QString::fromStdString(diskdata->vecSave->at(index)->at(6)) +
-                    "\n" + "Disk Flags: " + QString::fromStdString(diskdata->vecSave->at(index)->at(7)));
+    label->setText("Disk: " + QString::fromStdString(diskdata->vecSave.at(index).at(0)) +
+                    "\n" + "Model: " + QString::fromStdString(diskdata->vecSave.at(index).at(1)) +
+                    "\n" + "Type: " + QString::fromStdString(diskdata->vecSave.at(index).at(2)) +
+                    "\n" + "Size: " + QString::fromStdString(diskdata->vecSave.at(index).at(3)) +
+                    "\n" + "Logical sector size: " + QString::fromStdString(diskdata->vecSave.at(index).at(4)) + "B" +
+                    "\n" + "Physical sector size: " + QString::fromStdString(diskdata->vecSave.at(index).at(5)) + "B" +
+                    "\n" + "Partition Table: " + QString::fromStdString(diskdata->vecSave.at(index).at(6)) +
+                    "\n" + "Disk Flags: " + QString::fromStdString(diskdata->vecSave.at(index).at(7)));
     chartView->setRenderHint(QPainter::Antialiasing);
     chartView->chart()->setTitle("Patitions table");
     chartView->chart()->addSeries(dataChart->series);
@@ -49,3 +49,8 @@ Dialog::Dialog(QWidget *parent, DataParted *dataParted, DiskData *diskdata, Data
     setLayout(layout);
 
 };
+
+Dialog::~Dialog()
+{
+
+}
