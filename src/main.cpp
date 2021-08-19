@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
      if (euid != 0) {
 
-        cout << "You don't have root permissions. Please run the program as root user\n";
+        cout << "You don't have root permissions. Please run the program as root\n";
         a.exit();
 
    } else {
