@@ -25,7 +25,7 @@
 FreespaceModel::FreespaceModel(DataFreespace *dataFreespace, QObject *parent) :
             QAbstractTableModel(parent)
 {
-    dataVec.insert(dataVec.end(),dataFreespace->vecSave->begin(), dataFreespace->vecSave->end() );
+    dataVec.insert(dataVec.end(),dataFreespace->vecSave.begin(), dataFreespace->vecSave.end() );
     listSize = dataVec.size();
     col = 9;
 
@@ -67,10 +67,10 @@ if (role == Qt::DisplayRole) {
 
     while(index.row()){
 
-        return (QString::fromStdString(dataVec[index.row()]->at(index.column())));
+        return (QString::fromStdString(dataVec[index.row()].at(index.column())));
 
 }
-    return (QString::fromStdString(dataVec[index.row()]->at(index.column())));
+    return (QString::fromStdString(dataVec[index.row()].at(index.column())));
 
 }
 
@@ -125,6 +125,12 @@ QVariant FreespaceModel::headerData(int part, Qt::Orientation orient, int role) 
 QPair<QString,QString> FreespaceModel::addData(int i)
 {
 
-    return qMakePair(QString::fromStdString(dataVec.at(i)->at(0)),
-                            QString::fromStdString(dataVec.at(i)->at(4)));
+    return qMakePair(QString::fromStdString(dataVec.at(i).at(0)),
+                            QString::fromStdString(dataVec.at(i).at(4)));
 }
+
+FreespaceModel::~FreespaceModel()
+{
+
+}
+
