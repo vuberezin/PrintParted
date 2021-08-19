@@ -149,7 +149,7 @@ void Widget::createSplash(QString str)
                    " space outside of already generated partitions and can be used to expand existing partition\n"
                    " or create new one.")
                    +  QObject::tr(" It can be used under the GPLv2\n")
-                   +  QObject::tr(" Contact for more information: berezin-v.u@yandex.ru\n");
+                   +  QObject::tr(" For more information contact: berezin-v.u@yandex.ru\n");
 
     splash->showMessage(message, bottonleft, Qt::lightGray);
 
