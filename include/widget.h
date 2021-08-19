@@ -80,7 +80,7 @@ public:
     QDialog* dialogWidget;
     QGridLayout *layout;
     int vecSize(vector<vector<string>> vec);
-    QList<QString>* addComboItem(DiskData *diskData, QList<QString>* values);
+    QList<QString>* addComboItem(DiskData *diskData, QList<QString> *values);
     void createSplash(QString str);
 
     ~Widget();
@@ -93,6 +93,7 @@ public slots:
 
 
 };
+
 
 
 #endif // WIDGET_H
