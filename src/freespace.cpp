@@ -27,15 +27,14 @@ DataFreespace::DataFreespace()
     PedDisk *disk = NULL;
     const PedDiskType* type;
     PedPartition *part = NULL;
-    vecSave = new vector<vector<string>*>();
     vecSave = partFreespace(dev, disk, part);
 
 }
 
 
-vector<vector<string>*>* DataFreespace::partFreespace(PedDevice *dev, PedDisk *disk, PedPartition *part){
+vector<vector<string>> DataFreespace::partFreespace(PedDevice *dev, PedDisk *disk, PedPartition *part){
 
-    listVect = new vector<vector<string>*>();
+    vector<vector<string>> listVect; // = new vector<vector<string>*>();
     ped_device_probe_all();
 
     while ((dev = ped_device_get_next(dev))){
@@ -47,37 +46,37 @@ vector<vector<string>*>* DataFreespace::partFreespace(PedDevice *dev, PedDisk *d
               part = ped_disk_next_partition (disk, part)) {
 
     if(part->type == PED_PARTITION_FREESPACE){
-        vecList = new vector<string>();
-        vecList->push_back(dev->path);
+        vector<string> vecList; // = new vector<string>();
+        vecList.push_back(dev->path);
 
-        vecList->push_back(" - ");
-        vecList->push_back("freespace");
+        vecList.push_back(" - ");
+        vecList.push_back("freespace");
 
         char *freespace_start = ped_unit_format (dev, part->geom.start);
-        vecList->push_back(freespace_start);
+        vecList.push_back(freespace_start);
         free (freespace_start);
 
         char *freespace_end = ped_unit_format_byte (dev, (part->geom.end + 1) *
                                           (dev)->sector_size - 1);
-        vecList->push_back(freespace_end);
+        vecList.push_back(freespace_end);
         free (freespace_end);
 
         char *freespace_size = ped_unit_format (dev, part->geom.length);
-        vecList->push_back(freespace_size);
+        vecList.push_back(freespace_size);
         free (freespace_size);
 
         string free_geom_start;
         free_geom_start = toString(part->geom.start);
-        vecList->push_back(free_geom_start);
+        vecList.push_back(free_geom_start);
 
         string free_geom_end;
         free_geom_end = toString(part->geom.end);
-        vecList->push_back(free_geom_end);
+        vecList.push_back(free_geom_end);
 
         string geom_length;
         geom_length = toString(part->geom.length);
-        vecList->push_back(geom_length);
-        listVect->push_back(vecList);
+        vecList.push_back(geom_length);
+        listVect.push_back(vecList);
         }
     }
     }
@@ -95,3 +94,9 @@ string DataFreespace::toString(long long x)
     str = stream.str();
     return str;
 }
+
+DataFreespace::~DataFreespace()
+{
+
+}
+
