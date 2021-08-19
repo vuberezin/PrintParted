@@ -21,6 +21,7 @@
 #include "include/chart.h"
 
 
+
 DataChart::DataChart( DataParted *dataParted, DiskData *diskData, DataFreespace *dataFreespace, int index)
 {
     //: QWidget(parent)
@@ -38,32 +39,32 @@ void DataChart::chartData(DataParted *dataParted, DiskData *diskData, DataFreesp
 
     series = new QPieSeries();
     series->setHoleSize(0.35);
-
-    vecChart = new vector<vector<string>*>();
+    vector<vector<string>> vecChart;
     vecChart = dataParted->vecSave;
 
-    int size = diskData->vecSave->size();
+    int size = diskData->vecSave.size();
     static int *arr1 = new int[size];
 
     if(first){
 
     for(int i = 0; i < size; i++){
 
-        arr1[i] = dataParted->countPart(dev,disk,part, diskData->vecSave->at(i)->at(0));
+        arr1[i] = dataParted->countPart(dev,disk,part, diskData->vecSave.at(i).at(0));
 
     }
     first = false;
     }
 
-    string device = diskData->vecSave->at(index)->at(0);
-    int lenght = dataFreespace->vecSave->size();
+
+    string device = diskData->vecSave.at(index).at(0);
+    int lenght = dataFreespace->vecSave.size();
     for(int i = 0; i != lenght; i++){
 
-        if(dataFreespace->vecSave->at(i)->at(0) == device){
+        if(dataFreespace->vecSave.at(i).at(0) == device){
 
-            PedSector diskSectors = atoi(diskData->vecSave->at(index)->at(6).c_str());
+            PedSector diskSectors = atoi(diskData->vecSave.at(index).at(6).c_str());
             PedSector sizeDisk = diskSectors*512;
-            PedSector sizePart = atoi(dataFreespace->vecSave->at(i)->at(8).c_str())*512;
+            PedSector sizePart = atoi(dataFreespace->vecSave.at(i).at(8).c_str())*512;
             float percentPart = ((float)sizePart/(float)sizeDisk)*100;
 
          if(percentPart > 0.8){
@@ -77,22 +78,22 @@ void DataChart::chartData(DataParted *dataParted, DiskData *diskData, DataFreesp
         }
     }
     PedSector sizePart;
-    PedSector diskSectors = atoi(diskData->vecSave->at(index)->at(6).c_str());
+    PedSector diskSectors = atoi(diskData->vecSave.at(index).at(6).c_str());
     PedSector sizeDisk = diskSectors*512;
     int i = countArray(arr1, index);
     int x = countArray(arr1, index + 1);
 
     for(; i != x; i++){
 
-    if(vecChart->at(i)->at(2) == "extended" ){
+    if(vecChart.at(i).at(2) == "extended" ){
 
         i++;
-        PedSector partSectors = atoi(vecChart->at(i)->at(8).c_str() );
+        PedSector partSectors = atoi(vecChart.at(i).at(8).c_str() );
         sizePart = partSectors*512;
 
     } else {
 
-        PedSector partSectors = atoi(vecChart->at(i)->at(8).c_str() );
+        PedSector partSectors = atoi(vecChart.at(i).at(8).c_str() );
         sizePart = partSectors*512;
 
     }
@@ -100,22 +101,23 @@ void DataChart::chartData(DataParted *dataParted, DiskData *diskData, DataFreesp
     float percentPart = ((float)sizePart/(float)sizeDisk)*100;
     string percentPartition = toString(percentPart);
 
-    if(vecChart->at(i)->at(2) == "extended"){
+    if(vecChart.at(i).at(2) == "extended"){
 
         i++;
-        string str = "Part" + vecChart->at(i)->at(1) + " " + percentPartition + "%";
+        string str = "Part" + vecChart.at(i).at(1) + " " + percentPartition + "%";
         slice = series->append(str.c_str(), percentPart);
         slice->setExploded();
         slice->setLabelVisible();
 
     } else if(percentPart > 0.8){
 
-        string str = "Part" + vecChart->at(i)->at(1) + " " + percentPartition + "%";
+        string str = "Part" + vecChart.at(i).at(1) + " " + percentPartition + "%";
         slice = series->append(str.c_str(), percentPart);
         slice->setExploded();
         slice->setLabelVisible();
     }
     }
+
 }
 
 string DataChart::toString(float x)
@@ -132,4 +134,9 @@ int DataChart::countArray(int arr[], int count)
 {
     int init = 0;
     return accumulate(arr, arr + count, init);
+}
+
+DataChart::~DataChart()
+{
+
 }
