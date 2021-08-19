@@ -49,20 +49,19 @@ class DataParted
 public:
     DataParted();
     vector<string> *vecData;
-    vector<vector<string>*> *vecSave;
-    vector<string> *vecList;
+    vector<vector<string>> vecSave;
+    vector<string> vecList;
     vector<vector<string>*> *listVect;
     bool check_feature;
     string partFlags (PedPartition const *part);
-    vector<vector<string>*>* partInfo (PedDevice *dev, PedDisk *disk, PedPartition *part);
+    vector<vector<string>> partInfo (PedDevice *dev, PedDisk *disk, PedPartition *part);
     int countPart(PedDevice *dev, PedDisk *disk, PedPartition *part, string path);
     int countExtPart(PedDevice *dev, PedDisk *disk, PedPartition *part, string path);
     string toString(long long x);
 
+    ~DataParted();
 
 };
-
-
 
 
 #endif // PARTED_H
