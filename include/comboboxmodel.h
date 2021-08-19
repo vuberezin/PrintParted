@@ -28,12 +28,14 @@ class ComboBoxModel : public QAbstractListModel
 
 public:
     ComboBoxModel(QObject *parent = nullptr);
-    QList<QString> *values;
+    QList<QString>* values;
     int rowCount(const QModelIndex &) const;
     QVariant data(const QModelIndex &index, int role) const;
-    void populate(QList<QString> *newValues);
+    void populate(QList<QString>* newValues);
 
+    ~ComboBoxModel();
 };
+
 
 
 #endif // COMBOBOXMODEL_H
