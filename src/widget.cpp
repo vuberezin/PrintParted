@@ -24,6 +24,7 @@
 #include "include/freespace.h"
 
 
+
 Widget::Widget(QWidget *parent) :
             QWidget(parent)
 {
@@ -89,8 +90,10 @@ Widget::Widget(QWidget *parent) :
     /*layout->addWidget(freespaceView, 4, 0, 1, 2);*/
     setLayout(layout);
     setWindowTitle(tr("PrintParted"));
+    delete dataChart;
 
     connect(comboBox,SIGNAL(activated(int)),this, SLOT(clickedAction(int)));
+
 }
 
 void Widget::clickedAction(int index)
@@ -101,6 +104,7 @@ void Widget::clickedAction(int index)
     dataChart->series->setPieSize(0.6);
     chartView->chart()->addSeries(dataChart->series);
     chartView->chart()->setTitle("Disk Partitions");
+    delete dataChart;
     /*chartView->resize(1278, 280);*/
 
 //------------------------------------------------------------------------------------------------
@@ -112,10 +116,10 @@ void Widget::clickedAction(int index)
 
 QList<QString>* Widget::addComboItem(DiskData *diskData, QList<QString>* values)
 {
-    int size = diskData->vecSave->size();
+    int size = diskData->vecSave.size();
     for(int i = 0; i < size; i++){
 
-        values->append(QString::fromStdString(diskData->vecSave->at(i)->at(0)));
+        values->append(QString::fromStdString(diskData->vecSave.at(i).at(0)));
     }
     return values;
 }
@@ -139,18 +143,26 @@ void Widget::createSplash(QString str)
     splash->show();
     Qt::Alignment bottonleft = Qt::AlignLeft | Qt::AlignBottom;
 
-    QString message = 
+    QString message =
        QObject::tr(" PrintParted is a program for viewing the disk partition table without disk operations. Disk\n"
                    " partitions and freespace are shown in a pie chart using the Qt-5.15 framework. Freespace means\n"
                    " space outside of already generated partitions and can be used to expand existing partition\n"
                    " or create new one.")
                    +  QObject::tr(" It can be used under the GPLv2\n")
-                   +  QObject::tr(" Contact for more information: berezin-v.u@yandex.ru\n"); 
+                   +  QObject::tr(" Contact for more information: berezin-v.u@yandex.ru\n");
+
     splash->showMessage(message, bottonleft, Qt::lightGray);
 
 }
 
 Widget::~Widget()
 {
-
+    delete dataParted;
+    delete diskData;
+    delete dataFreespace;
+    delete values;
+    delete combomodel;
+    delete comboBox;
+    delete diskTableModel;
 }
+
