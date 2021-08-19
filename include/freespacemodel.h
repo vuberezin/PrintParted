@@ -42,7 +42,7 @@ public:
     FreespaceModel(DataFreespace *dataFreespace, QObject *parent);
     DataFreespace *dataFreespace;
     QPair<QString, QString> message;
-    vector<vector<string>*> dataVec;
+    vector<vector<string>> dataVec;
     QList<QString> dataList;
     int listSize;
     int col;
@@ -52,7 +52,8 @@ public:
     QVariant headerData(int part, Qt::Orientation orient, int role) const;
     QPair<QString,QString> addData(int i);
 
-
+    ~FreespaceModel();
 };
+
 
 #endif // FREESPACEMODEL_H
