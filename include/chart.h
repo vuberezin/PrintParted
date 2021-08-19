@@ -49,15 +49,16 @@ public:
     DataParted *dataParted;
     DataFreespace *dataFreespace;
     DiskData *diskData;
-    vector<vector<string>*> *vecChart;
+    vector<vector<string>> *vecChart;
     void chartData(DataParted *dataPared, DiskData *diskData, DataFreespace *dataFreespace, int index);
     int countArray(int *array, int count);
     string toString(float x);
+
+    ~DataChart();
 
 private:
     inline static bool first = true;
 
 };
-
 
 #endif // CHART_H
