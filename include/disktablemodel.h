@@ -42,7 +42,7 @@ public:
     DiskTableModel(QObject *parent = 0);
     DiskData *diskData;
     vector<string> *vList;
-    vector<vector<string>*> mList;
+    vector<vector<string>> mList;
     QList<QString> dList;
     int listSize;
     int col;
@@ -51,6 +51,8 @@ public:
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
     QVariant headerData(int part, Qt::Orientation orient, int role) const;
+
+    ~DiskTableModel();
 
 };
 
