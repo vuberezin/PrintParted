@@ -25,7 +25,7 @@
 TableModel::TableModel(DataParted *dataParted, QObject *parent) :
             QAbstractTableModel(parent)
 {
-    dataVec.insert(dataVec.end(),dataParted->vecSave->begin(), dataParted->vecSave->end() );
+    dataVec.insert(dataVec.end(),dataParted->vecSave.begin(), dataParted->vecSave.end() );
     dataList.append(dTime->currentDateTime().toString());
     listSize = dataVec.size();
     col = 12;
@@ -68,10 +68,10 @@ if (role == Qt::DisplayRole) {
 
     while(index.row()){
 
-        return (QString::fromStdString(dataVec[index.row()]->at(index.column())));
+        return (QString::fromStdString(dataVec[index.row()].at(index.column())));
 
 }
-    return (QString::fromStdString(dataVec[index.row()]->at(index.column())));
+    return (QString::fromStdString(dataVec[index.row()].at(index.column())));
 
 }
 
@@ -135,6 +135,12 @@ QVariant TableModel::headerData(int part, Qt::Orientation orient, int role) cons
 QPair<QString,QString> TableModel::addData(int i)
 {
 
-    return qMakePair(QString::fromStdString(dataVec.at(i)->at(0)),
-                            QString::fromStdString(dataVec.at(i)->at(4)));
+    return qMakePair(QString::fromStdString(dataVec.at(i).at(0)),
+                            QString::fromStdString(dataVec.at(i).at(4)));
 }
+
+TableModel::~TableModel()
+{
+
+}
+
