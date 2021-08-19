@@ -28,6 +28,7 @@ ComboBoxModel::ComboBoxModel(QObject *parent)
                 :QAbstractListModel(parent)
 {
     values = new QList<QString>();
+
 }
 
 int ComboBoxModel::rowCount(const QModelIndex &) const
@@ -61,10 +62,15 @@ QVariant ComboBoxModel::data( const QModelIndex &index, int role ) const
 }
 
 
-void ComboBoxModel::populate(QList<QString> *newValues)
+void ComboBoxModel::populate(QList<QString>* newValues)
 {
     int id = this->values->count();
     this->beginInsertRows(QModelIndex(), 1, id);
     this->values = newValues;
     endInsertRows();
+}
+
+ComboBoxModel::~ComboBoxModel()
+{
+
 }
