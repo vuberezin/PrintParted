@@ -46,20 +46,18 @@ class DiskData
 {
 public:
     DiskData();
-    vector<string> *vecDisk;
-    vector<vector<string>*> *vecSave;
-    vector<string> *vecTemp;
+    vector<string> vecDisk;
+    vector<vector<string>> vecSave;
     map<int, string> *diskType;
     vector<string>* vecTypes(int index);
     string diskFlags (PedDisk const *disk);
     void diskGeometry (const PedDevice *dev);
-    vector<string>* diskInfo (const PedDevice *dev, const PedDisk *diskp);
+    vector<string> diskInfo (const PedDevice *dev, const PedDisk *diskp);
     string toString(long long x);
 
-private:
-    int row;
-    int columns;
+    ~DiskData();
 
 };
+
 
 #endif // DISK_H
