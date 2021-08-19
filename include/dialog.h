@@ -41,8 +41,9 @@ class Dialog : public QDialog
     DiskData *diskdata;
     QTextBlock *textBlock;
     int index;
+    
+    ~Dialog();
 
 };
-
 
 #endif // DIALOG_H
