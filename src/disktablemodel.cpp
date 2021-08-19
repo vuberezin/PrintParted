@@ -27,7 +27,7 @@ DiskTableModel::DiskTableModel(QObject *parent) :
 {
     diskData = new DiskData();
     dTime = new QDateTime();
-    mList.insert(mList.end(),diskData->vecSave->begin(), diskData->vecSave->end() );
+    mList.insert(mList.end(),diskData->vecSave.begin(), diskData->vecSave.end() );
     dList.append(dTime->currentDateTime().toString());
     listSize = mList.size();
     col = 9;
@@ -61,10 +61,10 @@ QVariant DiskTableModel::data(const QModelIndex &index, int role) const
 
     while(index.row()){
 
-       return (QString::fromStdString(mList[index.row()]->at(index.column())));
+       return (QString::fromStdString(mList[index.row()].at(index.column())));
 
     }
-       return (QString::fromStdString(mList[index.row()]->at(index.column())));
+       return (QString::fromStdString(mList[index.row()].at(index.column())));
 
     }
 
@@ -116,3 +116,10 @@ QVariant DiskTableModel::headerData(int part, Qt::Orientation orient, int role) 
 
     return QVariant();
 }
+
+DiskTableModel::~DiskTableModel()
+{
+    delete diskData;
+    delete dTime;
+}
+
