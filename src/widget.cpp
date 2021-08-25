@@ -47,7 +47,8 @@ Widget::Widget(QWidget *parent) :
     diskTableView->setStyleSheet("QTableView:item:selected {background-color: #F0E68C  ; color: #000000}\n"
                                  "QTableView:item:selected:focus {background-color: #F0E68C;}");
     diskTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
+    diskTableView->setContextMenuPolicy(Qt::CustomContextMenu);
+                        
     dataFreespace = new DataFreespace;
     freespaceModel = new FreespaceModel(dataFreespace, this);
     freespaceView = new QTableView;
@@ -93,6 +94,8 @@ Widget::Widget(QWidget *parent) :
     delete dataChart;
 
     connect(comboBox,SIGNAL(activated(int)),this, SLOT(clickedAction(int)));
+    connect(diskTableView, SIGNAL(customContextMenuRequested(QPoint)), this,
+                                                SLOT(slotContextMenuRequested(QPoint)));
 
 }
 
@@ -106,7 +109,6 @@ void Widget::clickedAction(int index)
     chartView->chart()->setTitle("Disk Partitions");
     delete dataChart;
     /*chartView->resize(1278, 280);*/
-
 //------------------------------------------------------------------------------------------------
     /*dialog = new Dialog(this, dataParted, diskData, index);
     dialog->resize(900, 700);
@@ -123,6 +125,38 @@ QList<QString>* Widget::addComboItem(DiskData *diskData, QList<QString>* values)
     }
     return values;
 }
+
+void Widget::slotContextMenuRequested(QPoint pos)
+{
+    QMenu * menu = new QMenu(this);
+    QAction * showFreespace = new QAction(tr("Show disk freespace"), this);
+    QAction * showDevice = new QAction(trUtf8("Show disk partitions"), this);
+    connect(showFreespace, SIGNAL(triggered()), this, SLOT(slotShowFreespace()));
+    connect(showDevice, SIGNAL(triggered()), this, SLOT(slotShowDiskInfo()));
+    menu->addAction(showDevice);
+    menu->addAction(showFreespace);
+    menu->popup(diskTableView->viewport()->mapToGlobal(pos));
+}
+
+void Widget::slotShowFreespace()
+{
+    dialogContext = new DialogContext(this, dataParted, diskData, dataFreespace,
+                                      diskTableView->selectionModel()->currentIndex().row());
+    dialogContext->resize(950, 800);
+    dialogContext->setWindowTitle("Disk Partitions");
+    dialogContext->show();
+
+}
+
+void Widget::slotShowDiskInfo()
+{
+    dialog = new Dialog(this, dataParted, diskData, dataFreespace,
+                        diskTableView->selectionModel()->currentIndex().row());
+    dialog->resize(950, 800);
+    dialog->setWindowTitle("Disk Partitions");
+    dialog->show();
+}
+
 
 int Widget::vecSize(vector<vector<string>> vec)
 {
