@@ -1,5 +1,6 @@
 #ifndef DIALOGCONTEXT_H
 #define DIALOGCONTEXT_H
+
 #include <QtCharts>
 #include <QDialog>
 #include <QTextBlock>
@@ -31,8 +32,6 @@ public:
     int row;
 
     ~DialogContext();
-
-
 
 private:
     Ui::DialogContext  *ui;
