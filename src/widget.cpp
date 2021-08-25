@@ -130,7 +130,7 @@ void Widget::slotContextMenuRequested(QPoint pos)
 {
     QMenu * menu = new QMenu(this);
     QAction * showFreespace = new QAction(tr("Show disk freespace"), this);
-    QAction * showDevice = new QAction(tr("Show disk partitions"), this);
+    QAction * showDevice = new QAction(tr("Show disk description"), this);
     connect(showFreespace, SIGNAL(triggered()), this, SLOT(slotShowFreespace()));
     connect(showDevice, SIGNAL(triggered()), this, SLOT(slotShowDiskInfo()));
     menu->addAction(showDevice);
