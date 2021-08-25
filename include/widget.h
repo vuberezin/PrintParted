@@ -90,6 +90,9 @@ private:
 
 public slots:
     void clickedAction( int i);
+    void slotShowFreespace();
+    void slotShowDiskInfo();
+    void slotContextMenuRequested(QPoint pos);
 
 
 };
