@@ -179,9 +179,10 @@ void Widget::createSplash(QString str)
 
     QString message =
        QObject::tr(" PrintParted is a program for viewing the disk partition table without disk operations. Disk\n"
-                   " partitions and freespace are shown in a pie chart using the Qt-5.15 framework. Freespace means\n"
-                   " space outside of already generated partitions and can be used to expand existing partition\n"
-                   " or create new one.")
+                   " partitions and freespace are shown in a pie chart using the Qt-5.15 framework. Also, disk\n"
+                   " partitions and freespace are displayed in the context menu in table with description disks\n"
+                   " Freespace means space outside of already generated partitions and can be used to expand\n"
+                   " existing partition or create new one.")
                    +  QObject::tr(" It can be used under the GPLv2\n")
                    +  QObject::tr(" For more information contact: berezin-v.u@yandex.ru\n");
 
