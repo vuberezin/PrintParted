@@ -62,5 +62,5 @@ Dialog::Dialog(QWidget *parent, DataParted *dataParted, DiskData *diskdata, Data
 
 Dialog::~Dialog()
 {
-
+    delete dataChart;
 }
