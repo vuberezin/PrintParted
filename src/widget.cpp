@@ -129,8 +129,8 @@ QList<QString>* Widget::addComboItem(DiskData *diskData, QList<QString>* values)
 void Widget::slotContextMenuRequested(QPoint pos)
 {
     QMenu * menu = new QMenu(this);
-    QAction * showFreespace = new QAction(tr("Show disk freespace"), this);
-    QAction * showDevice = new QAction(tr("Show disk description"), this);
+    QAction * showFreespace = new QAction(tr("disk freespace"), this);
+    QAction * showDevice = new QAction(tr("disk description"), this);
     connect(showFreespace, SIGNAL(triggered()), this, SLOT(slotShowFreespace()));
     connect(showDevice, SIGNAL(triggered()), this, SLOT(slotShowDiskInfo()));
     menu->addAction(showDevice);
