@@ -54,6 +54,7 @@ DialogContext::DialogContext(QWidget *parent, DataParted *dataParted, DiskData *
 
 DialogContext::~DialogContext()
 {
-    //delete ui;
+    delete label;
+    delete dataChart;
 }
 
