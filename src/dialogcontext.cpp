@@ -1,4 +1,4 @@
-#include"dialogcontext.h"
+#include "include/dialogcontext.h"
 
 
 
@@ -45,7 +45,7 @@ DialogContext::DialogContext(QWidget *parent, DataParted *dataParted, DiskData *
     layout->addWidget(freespaceView, 1, 0, 2, 1);
     setLayout(layout);
     } else {
-        label->setText("There is no free space on the disk: " +
+        label->setText("There is no freespace on the disk: " +
                        QString::fromStdString(device));
     }
     }
