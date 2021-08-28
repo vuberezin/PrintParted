@@ -142,7 +142,7 @@ void Widget::slotShowFreespace()
 {
     dialogContext = new DialogContext(this, dataParted, diskData, dataFreespace,
                                       diskTableView->selectionModel()->currentIndex().row());
-    dialogContext->resize(950, 800);
+    dialogContext->resize(1150, 800);
     dialogContext->setWindowTitle("Disk Freespace");
     dialogContext->show();
 
@@ -152,7 +152,7 @@ void Widget::slotShowDiskInfo()
 {
     dialog = new Dialog(this, dataParted, diskData, dataFreespace,
                         diskTableView->selectionModel()->currentIndex().row());
-    dialog->resize(950, 800);
+    dialog->resize(1150, 800);
     dialog->setWindowTitle("Disk Description");
     dialog->show();
 }
