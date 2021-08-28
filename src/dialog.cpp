@@ -25,6 +25,7 @@ Dialog::Dialog(QWidget *parent, DataParted *dataParted, DiskData *diskdata, Data
     QDialog(parent)
 {
     //ui->setupUi(this);
+    string device = diskdata->vecSave.at(index).at(0);    
     QGridLayout *layout = new QGridLayout;
     dataChart = new DataChart( dataParted, diskdata, dataFreespace, index);
     chartView = new QChartView();
@@ -38,6 +39,9 @@ Dialog::Dialog(QWidget *parent, DataParted *dataParted, DiskData *diskdata, Data
                                  "QTableView:item:selected:focus {background-color: #F0E68C;}");
     diskTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     label = new QLabel;
+    label->setStyleSheet("font-size: 13px; color: #2F4F4F;  border-style: solid;\
+                                                            border-width: 1px;\
+                                                            border-color: #F0E68C;");    
     label->setWordWrap(true);
     label->setText("  Disk: " + QString::fromStdString(diskdata->vecSave.at(index).at(0)) +
                     "\n" + "  Model: " + QString::fromStdString(diskdata->vecSave.at(index).at(1)) +
@@ -49,13 +53,13 @@ Dialog::Dialog(QWidget *parent, DataParted *dataParted, DiskData *diskdata, Data
                     "\n" + "  Partition Table: " + QString::fromStdString(diskdata->vecSave.at(index).at(7)) +
                     "\n" + "  Disk Flags: " + QString::fromStdString(diskdata->vecSave.at(index).at(8)));
     chartView->setRenderHint(QPainter::Antialiasing);
-    chartView->chart()->setTitle("Patitions table");
+    chartView->chart()->setTitle("Disk: " + QString::fromStdString(device));
     chartView->chart()->addSeries(dataChart->series);
     chartView->chart()->legend()->setAlignment(Qt::AlignBottom);
     chartView->chart()->setTheme(QChart::ChartThemeQt);
     chartView->chart()->legend()->setFont(QFont("Arial", 10));
     layout->addWidget(chartView, 0, 0, 1, 1);
-    layout->addWidget(label, 1, 0, 2, 1);
+    layout->addWidget(diskTableView, 1, 0, 2, 1);
     setLayout(layout);
 
 };
