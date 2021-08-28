@@ -109,11 +109,7 @@ void Widget::clickedAction(int index)
     chartView->chart()->setTitle("Disk Partitions");
     delete dataChart;
     /*chartView->resize(1278, 280);*/
-//------------------------------------------------------------------------------------------------
-    /*dialog = new Dialog(this, dataParted, diskData, index);
-    dialog->resize(900, 700);
-    dialog->setWindowTitle("Disk Partitions");
-    dialog->show();*/
+
 }
 
 QList<QString>* Widget::addComboItem(DiskData *diskData, QList<QString>* values)
@@ -142,7 +138,7 @@ void Widget::slotShowFreespace()
 {
     dialogContext = new DialogContext(this, dataParted, diskData, dataFreespace,
                                       diskTableView->selectionModel()->currentIndex().row());
-    dialogContext->resize(1150, 800);
+    dialogContext->resize(1160, 800);
     dialogContext->setWindowTitle("Disk Freespace");
     dialogContext->show();
 
@@ -152,7 +148,7 @@ void Widget::slotShowDiskInfo()
 {
     dialog = new Dialog(this, dataParted, diskData, dataFreespace,
                         diskTableView->selectionModel()->currentIndex().row());
-    dialog->resize(1150, 800);
+    dialog->resize(1160, 800);
     dialog->setWindowTitle("Disk Description");
     dialog->show();
 }
@@ -169,6 +165,7 @@ int Widget::vecSize(vector<vector<string>> vec)
     }
     return count;
 }
+
 
 void Widget::createSplash(QString str)
 {
@@ -200,4 +197,3 @@ Widget::~Widget()
     delete comboBox;
     delete diskTableModel;
 }
-
