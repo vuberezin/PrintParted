@@ -46,6 +46,8 @@
 #include "dialog.h"
 #include "freespace.h"
 #include "freespacemodel.h"
+#include "dialogcontext.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -78,6 +80,7 @@ public:
     QChartView *chartView;
     Dialog *dialog;
     QDialog* dialogWidget;
+    DialogContext *dialogContext;
     QGridLayout *layout;
     int vecSize(vector<vector<string>> vec);
     QList<QString>* addComboItem(DiskData *diskData, QList<QString> *values);
