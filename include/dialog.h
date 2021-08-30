@@ -27,6 +27,7 @@
 #include "chart.h"
 #include "part.h"
 #include "disk.h"
+#include "disktablemodel.h"
 
 
 class Dialog : public QDialog
@@ -39,6 +40,8 @@ class Dialog : public QDialog
     QLabel *label;
     DataParted *dataParted;
     DiskData *diskdata;
+    DiskTableModel *diskTableModel;
+    QTableView *diskTableView;
     QTextBlock *textBlock;
     int index;
     
