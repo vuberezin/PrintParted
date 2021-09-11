@@ -54,6 +54,7 @@ DialogContext::DialogContext(QWidget *parent, DataParted *dataParted, DiskData *
     freespaceView->setStyleSheet("QTableView:item:selected {background-color: #F0E68C  ; color: #000000}\n"
                                  "QTableView:item:selected:focus {background-color: #F0E68C;}");
     freespaceView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    freespaceView->setSelectionBehavior(QAbstractItemView::SelectRows);
     chartView->setRenderHint(QPainter::Antialiasing);
     chartView->chart()->setTitle("Disk: " + QString::fromStdString(device));
     chartView->chart()->addSeries(dataChart->series);
