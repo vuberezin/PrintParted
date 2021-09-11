@@ -39,7 +39,8 @@ Widget::Widget(QWidget *parent) :
     tableView->setStyleSheet("QTableView:item:selected {background-color: #F0E68C  ; color: #000000}\n"
                              "QTableView:item:selected:focus {background-color: #F0E68C;}");
     tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
+    tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+                        
     diskTableModel = new DiskTableModel;
     diskTableView = new QTableView;
     diskTableView->setModel(diskTableModel);
@@ -47,6 +48,7 @@ Widget::Widget(QWidget *parent) :
     diskTableView->setStyleSheet("QTableView:item:selected {background-color: #F0E68C  ; color: #000000}\n"
                                  "QTableView:item:selected:focus {background-color: #F0E68C;}");
     diskTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    diskTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
     diskTableView->setContextMenuPolicy(Qt::CustomContextMenu);
                         
     dataFreespace = new DataFreespace;
