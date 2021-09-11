@@ -38,6 +38,7 @@ Dialog::Dialog(QWidget *parent, DataParted *dataParted, DiskData *diskdata, Data
     diskTableView->setStyleSheet("QTableView:item:selected {background-color: #F0E68C  ; color: #000000}\n"
                                  "QTableView:item:selected:focus {background-color: #F0E68C;}");
     diskTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    diskTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
     label = new QLabel;
     label->setStyleSheet("font-size: 13px; color: #2F4F4F;  border-style: solid;\
                                                             border-width: 1px;\
