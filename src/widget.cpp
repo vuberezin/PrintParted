@@ -97,8 +97,7 @@ Widget::Widget(QWidget *parent) :
 
     connect(comboBox,SIGNAL(activated(int)),this, SLOT(clickedAction(int)));
     connect(diskTableView, SIGNAL(customContextMenuRequested(QPoint)), this,
-                                                SLOT(slotContextMenuRequested(QPoint)));
-    connect(this, &Widget::keyPressed, this, &Widget::keyPress);                    
+                                                SLOT(slotContextMenuRequested(QPoint)));                      
 
 }
 
@@ -171,34 +170,21 @@ int Widget::vecSize(vector<vector<string>> vec)
 
 void Widget::keyPressEvent(QKeyEvent *event)
 {
-    switch (event->key())
-    {
-    case Qt::Key_Return:
-        emit keyPressed(event);
-        break;
-                            
-    default:
-        break;
-    }
-}
-
-void Widget::keyPress(QKeyEvent *event)
-{
-    auto ind = diskTableView->selectionModel()->currentIndex();
+    auto ind = diskTableView->selectionModel()->currentIndex();          
     if(ind.row() == -1){
         return;
     }
-            
+
     switch (event->key())
     {
     case Qt::Key_Return:
+        //emit keyPressed(event);
         dialog = new Dialog(this, dataParted, diskData, dataFreespace,
                             ind.row());
         dialog->resize(1160, 800);
         dialog->setWindowTitle("Disk Description");
         dialog->show();
         break;
-
     default:
         break;
     }
