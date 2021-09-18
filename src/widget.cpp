@@ -185,6 +185,10 @@ void Widget::keyPressEvent(QKeyEvent *event)
 void Widget::keyPress(QKeyEvent *event)
 {
     auto ind = diskTableView->selectionModel()->currentIndex();
+    if(ind.row() == -1){
+        return;
+    }
+            
     switch (event->key())
     {
     case Qt::Key_Return:
