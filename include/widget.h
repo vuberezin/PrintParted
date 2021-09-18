@@ -92,15 +92,11 @@ public:
 private:
      Ui::Widget *ui;
      
-signals:
-    void keyPressed(QKeyEvent *event);
-
 public slots:
     void clickedAction( int i);
     void slotShowFreespace();
     void slotShowDiskInfo();
     void slotContextMenuRequested(QPoint pos);
-    void keyPress(QKeyEvent *event);
 
 };
 
