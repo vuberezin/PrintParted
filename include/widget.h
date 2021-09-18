@@ -84,19 +84,23 @@ public:
     QGridLayout *layout;
     int vecSize(vector<vector<string>> vec);
     QList<QString>* addComboItem(DiskData *diskData, QList<QString> *values);
+    void keyPressEvent(QKeyEvent *event);
     void createSplash(QString str);
 
     ~Widget();
 
 private:
      Ui::Widget *ui;
+     
+signals:
+    void keyPressed(QKeyEvent *event);
 
 public slots:
     void clickedAction( int i);
     void slotShowFreespace();
     void slotShowDiskInfo();
     void slotContextMenuRequested(QPoint pos);
-
+    void keyPress(QKeyEvent *event);
 
 };
 
