@@ -190,7 +190,7 @@ void Widget::keyPress(QKeyEvent *event)
     case Qt::Key_Return:
         dialog = new Dialog(this, dataParted, diskData, dataFreespace,
                             ind.row());
-        dialog->resize(1260, 800);
+        dialog->resize(1160, 800);
         dialog->setWindowTitle("Disk Description");
         dialog->show();
         break;
