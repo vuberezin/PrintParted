@@ -178,12 +178,11 @@ void Widget::keyPressEvent(QKeyEvent *event)
     switch (event->key())
     {
     case Qt::Key_Return:
-        //emit keyPressed(event);
-        dialog = new Dialog(this, dataParted, diskData, dataFreespace,
-                            ind.row());
-        dialog->resize(1160, 800);
-        dialog->setWindowTitle("Disk Description");
-        dialog->show();
+        dialogContext = new DialogContext(this, dataParted, diskData, dataFreespace,
+                                          diskTableView->selectionModel()->currentIndex().row());
+        dialogContext->resize(1260, 800);
+        dialogContext->setWindowTitle("Disk Freespace");
+        dialogContext->show();
         break;
     default:
         break;
