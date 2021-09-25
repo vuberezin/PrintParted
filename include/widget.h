@@ -84,7 +84,8 @@ public:
     QGridLayout *layout;
     int vecSize(vector<vector<string>> vec);
     QList<QString>* addComboItem(DiskData *diskData, QList<QString> *values);
-    void keyPressEvent(QKeyEvent *event);
+    void keyPressEvent(QKeyEvent *event)override;
+    bool eventFilter(QObject *object, QEvent *event)override;
     void createSplash(QString str);
 
     ~Widget();
