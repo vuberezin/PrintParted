@@ -6,7 +6,7 @@
 # *Basic Functionality*
 
 *This contains two tables with description disks and partitions of each disk. Pie chart contains information about disk partitions and freespace 
-of each disk if the partition is more than 0.8 percent. Disk partitions are displayed after pressing Enter on selected row. Also, disk partitions and freespace are displayed in the context menu in table with description disks. In this case, freespace means space outside of already generated partitions and can be used to expand existing partition or create new one.* 
+of each disk if the partition is more than 0.8 percent. Freespace are displayed after pressing Enter on selected row. Also, disk partitions and freespace are displayed in the context menu in table with description disks. In this case, freespace means space outside of already generated partitions and can be used to expand existing partition or create new one.* 
 
 
 # *Building a Dynamically Linked Version*
