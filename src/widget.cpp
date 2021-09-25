@@ -194,7 +194,7 @@ bool Widget::eventFilter(QObject *object, QEvent *event)
 {            
     auto ind = diskTableView->selectionModel()->currentIndex(); 
     if(ind.row() == -1){
-        return;
+        return false;
     }        
     if (object == diskTableView->viewport()){
         if (event->type() == QEvent::MouseButtonDblClick) {
