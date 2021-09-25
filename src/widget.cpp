@@ -193,6 +193,9 @@ void Widget::keyPressEvent(QKeyEvent *event)
 bool Widget::eventFilter(QObject *object, QEvent *event) 
 {            
     auto ind = diskTableView->selectionModel()->currentIndex(); 
+    if(ind.row() == -1){
+        return;
+    }        
     if (object == diskTableView->viewport()){
         if (event->type() == QEvent::MouseButtonDblClick) {
             QMouseEvent *mouseEvent = static_cast <QMouseEvent*>(event);
