@@ -50,6 +50,8 @@ Widget::Widget(QWidget *parent) :
     diskTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     diskTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
     diskTableView->setContextMenuPolicy(Qt::CustomContextMenu);
+    diskTableView->setMouseTracking(true);
+    diskTableView->viewport()->installEventFilter(this);                    
                         
     dataFreespace = new DataFreespace;
     freespaceModel = new FreespaceModel(dataFreespace, this);
@@ -103,7 +105,6 @@ Widget::Widget(QWidget *parent) :
 
 void Widget::clickedAction(int index)
 {
-
     dataChart = new DataChart(dataParted, diskData, dataFreespace, index);
     chartView->chart()->removeAllSeries();
     dataChart->series->setPieSize(0.6);
@@ -189,6 +190,23 @@ void Widget::keyPressEvent(QKeyEvent *event)
     }
 }
 
+bool Widget::eventFilter(QObject *object, QEvent *event) 
+{            
+    auto ind = diskTableView->selectionModel()->currentIndex(); 
+    if (object == diskTableView->viewport()){
+        if (event->type() == QEvent::MouseButtonDblClick) {
+            QMouseEvent *mouseEvent = static_cast <QMouseEvent*>(event);
+                    
+            if (mouseEvent->button() == Qt::LeftButton) {
+                dialogContext = new DialogContext(this, dataParted, diskData, dataFreespace,
+                                          ind.row());
+                dialogContext->resize(1160, 800);
+                dialogContext->setWindowTitle("Disk Freespace");
+                dialogContext->show();
+            }
+        }
+    }
+}
 
 void Widget::createSplash(QString str)
 {
@@ -220,3 +238,4 @@ Widget::~Widget()
     delete comboBox;
     delete diskTableModel;
 }
+
