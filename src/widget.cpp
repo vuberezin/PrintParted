@@ -139,7 +139,8 @@ void Widget::slotShowFreespace()
 {
     dialogContext = new DialogContext(this, dataParted, diskData, dataFreespace,
                                       diskTableView->selectionModel()->currentIndex().row());
-    dialogContext->resize(1160, 800);
+    QSize size = this->size();
+    dialogContext->resize(size.width()/1.1, size.height()/1.1);
     dialogContext->setWindowTitle("Disk Freespace");
     dialogContext->show();
 
@@ -149,7 +150,8 @@ void Widget::slotShowDiskInfo()
 {
     dialog = new Dialog(this, dataParted, diskData, dataFreespace,
                         diskTableView->selectionModel()->currentIndex().row());
-    dialog->resize(1160, 800);
+    QSize size = this->size();
+    dialog->resize(size.width()/1.1, size.height()/1.1);
     dialog->setWindowTitle("Disk Description");
     dialog->show();
 }
@@ -179,7 +181,8 @@ void Widget::keyPressEvent(QKeyEvent *event)
     case Qt::Key_Return:
         dialogContext = new DialogContext(this, dataParted, diskData, dataFreespace,
                                           diskTableView->selectionModel()->currentIndex().row());
-        dialogContext->resize(1160, 800);
+        QSize size = this->size();
+        dialogContext->resize(size.width()/1.1, size.height()/1.1);
         dialogContext->setWindowTitle("Disk Freespace");
         dialogContext->show();
         break;
