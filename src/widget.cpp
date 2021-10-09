@@ -71,7 +71,8 @@ Widget::Widget(QWidget *parent) :
                             " selection-background-color: #FFFFE0;");
     dataChart = new DataChart( dataParted, diskData, dataFreespace, 0);
     chartView = new QChartView();
-    chartView->resize(1278, 280);
+    QSize size = this->size();
+    chartView->resize(size.width()/1.1, size.height()/1.1);
     dataChart->series->setPieSize(0.6);
     chartView->setRenderHint(QPainter::Antialiasing);
     chartView->chart()->setTitle("Disk Partitions");
@@ -185,9 +186,7 @@ void Widget::keyPressEvent(QKeyEvent *event)
         dialogContext->resize(size.width()/1.1, size.height()/1.1);
         dialogContext->setWindowTitle("Disk Freespace");
         dialogContext->show();
-        break;
-    default:
-        break;
+        break;                            
     }
 }
 
