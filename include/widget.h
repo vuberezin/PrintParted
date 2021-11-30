@@ -78,6 +78,7 @@ public:
     DataFreespace *dataFreespace;
     FreespaceModel * freespaceModel;
     QChartView *chartView;
+    QItemSelectionModel *selectionModel;
     Dialog *dialog;
     QDialog* dialogWidget;
     DialogContext *dialogContext;
