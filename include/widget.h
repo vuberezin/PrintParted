@@ -97,6 +97,7 @@ public slots:
     void slotShowFreespace();
     void slotShowDiskInfo();
     void slotContextMenuRequested(QPoint pos);
+    void slotUpdate(const QItemSelection &selected, const QItemSelection &deselected);
 
 };
 
