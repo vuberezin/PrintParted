@@ -98,9 +98,38 @@ Widget::Widget(QWidget *parent) :
 
     connect(comboBox,SIGNAL(activated(int)),this, SLOT(clickedAction(int)));
     connect(diskTableView, SIGNAL(customContextMenuRequested(QPoint)), this,
-                                                SLOT(slotContextMenuRequested(QPoint)));                      
+                                                SLOT(slotContextMenuRequested(QPoint))); 
+    selectionModel = diskTableView->selectionModel();
+    connect(selectionModel, &QItemSelectionModel::selectionChanged, this, &Widget::slotUpdate);
 
 }
+
+void Widget::slotUpdate(const QItemSelection &selected, const QItemSelection &deselected)
+{
+
+    QModelIndex index;
+    QString data;
+    QModelIndexList items = selected.indexes();
+    QVariant variant;
+            
+        foreach (index, items) {
+            if(index.column() == 0){
+            variant = index.data();
+            }
+        }
+        for( int i = 0; i < tableModel->rowCount(); ++i ) {
+            bool match = false;
+            for( int x = 0; x < tableModel->columnCount(); ++x ) {
+                        
+                if(variant.toString() == (tableModel->data(tableModel->index(i,x)).toString())){
+                    match = true;
+                    break;
+        }
+        }
+            tableView->setRowHidden(i, !match);
+        }
+}
+
 
 void Widget::clickedAction(int index)
 {
