@@ -50,6 +50,7 @@ DialogContext::DialogContext(QWidget *parent, DataParted *dataParted, DiskData *
     freespaceModel = new FreespaceModel(dataFreespace, this);
     freespaceView = new QTableView;
     freespaceView->setModel(freespaceModel);
+    updateFreespace(QString::fromStdString(device));
     freespaceView->horizontalHeader()->setStyleSheet("QHeaderView::section {background-color: #F0E68C }");
     freespaceView->setStyleSheet("QTableView:item:selected {background-color: #F0E68C  ; color: #000000}\n"
                                  "QTableView:item:selected:focus {background-color: #F0E68C;}");
@@ -70,6 +71,24 @@ DialogContext::DialogContext(QWidget *parent, DataParted *dataParted, DiskData *
     }
     }
 
+}
+
+void DialogContext::updateFreespace(const QString &data)
+{
+
+        for( int i = 0; i < freespaceModel->rowCount(); ++i )
+        {
+
+            bool match = false;
+            for( int x = 0; x < freespaceModel->columnCount(); ++x )
+            {
+                if(data == (freespaceModel->data(freespaceModel->index(i,x)).toString())){
+                    match = true;
+                    break;
+        }
+        }
+            freespaceView->setRowHidden(i, !match);
+        }
 }
 
 DialogContext::~DialogContext()
