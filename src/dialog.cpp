@@ -32,6 +32,7 @@ Dialog::Dialog(QWidget *parent, DataParted *dataParted, DiskData *diskdata, Data
     diskTableModel = new DiskTableModel;
     diskTableView = new QTableView;
     diskTableView->setModel(diskTableModel);
+    updateDialog(QString::fromStdString(device));
     diskTableView->setContextMenuPolicy(Qt::CustomContextMenu);
 
     diskTableView->horizontalHeader()->setStyleSheet("QHeaderView::section {background-color: #F0E68C }");
@@ -64,6 +65,25 @@ Dialog::Dialog(QWidget *parent, DataParted *dataParted, DiskData *diskdata, Data
     setLayout(layout);
 
 };
+
+void Dialog::updateDialog(const QString &data)
+{
+
+        for( int i = 0; i < diskTableModel->rowCount(); ++i )
+        {
+
+            bool match = false;
+            for( int x = 0; x < diskTableModel->columnCount(); ++x )
+            {
+                if(data == (diskTableModel->data(diskTableModel->index(i,x)).toString())){
+                    match = true;
+                    break;
+        }
+        }
+            diskTableView->setRowHidden(i, !match);
+
+        }
+}
 
 Dialog::~Dialog()
 {
