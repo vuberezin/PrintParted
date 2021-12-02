@@ -52,7 +52,10 @@ public:
     int row;
 
     ~DialogContext();
-
+    
+public slots:
+    void updateFreespace(const QString &data);
+    
 private:
     Ui::DialogContext  *ui;
 
