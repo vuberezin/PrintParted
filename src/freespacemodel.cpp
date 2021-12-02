@@ -48,25 +48,17 @@ QVariant FreespaceModel::data(const QModelIndex &index, int role) const
 {
 
     if (!index.isValid()) {
-
         return QVariant();
     }
 
     if(index.row() < 0) {
-
         return QVariant();
 }
 
-/*
-if( role == Qt::BackgroundColorRole ){
-
-    return QVariant(QColor(Qt::lightGray));
-}*/
 
 if (role == Qt::DisplayRole) {
 
     while(index.row()){
-
         return (QString::fromStdString(dataVec[index.row()].at(index.column())));
 
 }
