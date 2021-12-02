@@ -46,6 +46,9 @@ class Dialog : public QDialog
     int index;
     
     ~Dialog();
+    
+public slots:
+    void updateDialog(const QString &data);
 
 };
 
