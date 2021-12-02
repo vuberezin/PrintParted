@@ -31,9 +31,10 @@ ComboBoxModel::ComboBoxModel(QObject *parent)
 
 }
 
-int ComboBoxModel::rowCount(const QModelIndex &) const
+int ComboBoxModel::rowCount(const QModelIndex &p) const
 {
-    return values->count();
+  Q_UNUSED(p);  
+  return values->count();
 }
 
 QVariant ComboBoxModel::data( const QModelIndex &index, int role ) const
@@ -41,19 +42,15 @@ QVariant ComboBoxModel::data( const QModelIndex &index, int role ) const
 
     QVariant value;
 
-    switch ( role ) {
+    switch(role) {
 
-    case Qt::DisplayRole:{
+    case Qt::DisplayRole:
+        value = this->values->value(index.row());   
+        break;
 
+    case Qt::UserRole:
         value = this->values->value(index.row());
-    }
-    break;
-
-    case Qt::UserRole:{
-
-        value = this->values->value(index.row());
-    }
-    break;
+        break;
 
     default:
         break;
