@@ -31,20 +31,18 @@ int main(int argc, char *argv[])
     uid_t euid = geteuid();
 
      if (euid != 0) {
-
         cout << "You don't have root permissions. Please run the program as root\n";
         a.exit();
 
-   } else {
-
+     } else {
         Widget w;
         w.createSplash(":/splash/pic.png");
         QEventLoop loop;
         QTimer::singleShot(1000, &loop, &QEventLoop::quit);
         loop.exec();
-        w.resize(1300, 900);
+        w.resize(1320, 900);
         w.show();
         return a.exec();
 
-   }
+     }
 }
