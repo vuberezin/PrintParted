@@ -138,6 +138,9 @@ void Widget::clickedAction(int index)
     dataChart->series->setPieSize(0.6);
     chartView->chart()->addSeries(dataChart->series);
     chartView->chart()->setTitle("Disk Partitions");
+    QItemSelectionModel::SelectionFlags flags = QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows;
+    QModelIndex indx = diskTableView->model()->index(index, 0);
+    diskTableView->selectionModel()->select(indx, flags);
     delete dataChart;
     /*chartView->resize(1278, 280);*/
 
