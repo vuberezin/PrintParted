@@ -67,13 +67,13 @@ void DataChart::chartData(DataParted *dataParted, DiskData *diskData, DataFreesp
             PedSector sizePart = atoi(dataFreespace->vecSave.at(i).at(8).c_str())*512;
             float percentPart = ((float)sizePart/(float)sizeDisk)*100;
 
-         if(percentPart > 0.8){
+         if(percentPart > 0){
 
             string percentPartition = toString(percentPart);
             string str = "Freespace " + percentPartition + "%";
             slice = series->append(str.c_str(), percentPart);
             slice->setExploded();
-            slice->setLabelVisible();
+            //slice->setLabelVisible();
             }
         }
     }
@@ -107,14 +107,14 @@ void DataChart::chartData(DataParted *dataParted, DiskData *diskData, DataFreesp
         string str = "Part" + vecChart.at(i).at(1) + " " + percentPartition + "%";
         slice = series->append(str.c_str(), percentPart);
         slice->setExploded();
-        slice->setLabelVisible();
+        //slice->setLabelVisible();
 
-    } else if(percentPart > 0.8){
+    } else if(percentPart > 0){
 
         string str = "Part" + vecChart.at(i).at(1) + " " + percentPartition + "%";
         slice = series->append(str.c_str(), percentPart);
         slice->setExploded();
-        slice->setLabelVisible();
+        //slice->setLabelVisible();
     }
     }
 
