@@ -111,6 +111,8 @@ void Widget::slotUpdate(const QItemSelection &selected, const QItemSelection &de
     QString data;
     QModelIndexList items = selected.indexes();
     QVariant variant;
+    int row =  items.at(0).row();
+    clickedAction(row);
             
         foreach (index, items) {
             if(index.column() == 0){
@@ -137,11 +139,12 @@ void Widget::clickedAction(int index)
     chartView->chart()->removeAllSeries();
     dataChart->series->setPieSize(0.6);
     chartView->chart()->addSeries(dataChart->series);
-    chartView->chart()->setTitle("Disk Partitions");
-    QItemSelectionModel::SelectionFlags flags = QItemSelectionModel::ClearAndSelect | QItemSelectionModel::Rows;
+    string device = diskData->vecSave.at(index).at(0);
+    chartView->chart()->setTitle(QString("Disk: %1").arg(QString::fromStdString(device)));
+    QItemSelectionModel::SelectionFlags flags = QItemSelectionModel::ClearAndSelect |
+            QItemSelectionModel::Rows;
     QModelIndex indx = diskTableView->model()->index(index, 0);
     diskTableView->selectionModel()->select(indx, flags);
-    delete dataChart;
     /*chartView->resize(1278, 280);*/
 
 }
@@ -252,5 +255,6 @@ Widget::~Widget()
     delete combomodel;
     delete comboBox;
     delete diskTableModel;
+    delete dataChart;
 }
 
