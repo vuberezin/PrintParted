@@ -111,8 +111,9 @@ void Widget::slotUpdate(const QItemSelection &selected, const QItemSelection &de
     QString data;
     QModelIndexList items = selected.indexes();
     QVariant variant;
-    int row =  items.at(0).row();
-    clickedAction(row);
+    //int row =  items.at(0).row();
+    auto indx = diskTableView->selectionModel()->currentIndex();
+    clickedAction(indx.row());
             
         foreach (index, items) {
             if(index.column() == 0){
