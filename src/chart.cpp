@@ -90,7 +90,8 @@ void DataChart::chartData(DataParted *dataParted, DiskData *diskData, DataFreesp
         i++;
         if(vecChart.at(i).at(2) != "logical" ){
             QMessageBox msgBox;
-            msgBox.setText("You need to create a logical partition");
+            msgBox.setText("You need to create a logical partition inside\n"
+                           "the extended partition");
             msgBox.setStyleSheet("QLabel {min-width: 300px;}");
             msgBox.exec();
             return;
