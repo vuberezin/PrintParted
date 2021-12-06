@@ -88,6 +88,14 @@ void DataChart::chartData(DataParted *dataParted, DiskData *diskData, DataFreesp
     if(vecChart.at(i).at(2) == "extended" ){
 
         i++;
+        if(vecChart.at(i).at(2) != "logical" ){
+            QMessageBox msgBox;
+            msgBox.setText("You need to create a logical partition");
+            msgBox.setStyleSheet("QLabel {min-width: 300px;}");
+            msgBox.exec();
+            return;
+        }
+        
         PedSector partSectors = atoi(vecChart.at(i).at(8).c_str() );
         sizePart = partSectors*512;
 
