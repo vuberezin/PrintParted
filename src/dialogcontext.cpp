@@ -21,14 +21,14 @@
 #include "include/dialogcontext.h"
 
 
-DialogContext::DialogContext(QWidget *parent, DataParted *dataParted, DiskData *diskdata,
+DialogContext::DialogContext(QWidget *parent, QTableView * tableView, DataParted *dataParted, DiskData *diskdata,
                                             DataFreespace *dataFreespace,int row ) :
     QDialog(parent)
    // ui(new Ui::DialogContext)
 {
 
     QGridLayout *layout = new QGridLayout;
-    dataChart = new DataChart( dataParted, diskdata, dataFreespace, row);
+    dataChart = new DataChart(tableView, dataParted, diskdata, dataFreespace, row);
     chartView = new QChartView();
     label = new QLabel;
     label->setWordWrap(true);
