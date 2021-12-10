@@ -34,7 +34,7 @@ class Dialog : public QDialog
 {
 
   public:
-    Dialog(QWidget *parent, DataParted *dataParted, DiskData *diskdata, DataFreespace *dataFreespace,int index);
+    Dialog(QWidget *parent, QTableView * tableView, DataParted *dataParted, DiskData *diskdata, DataFreespace *dataFreespace,int index);
     DataChart *dataChart;
     QChartView *chartView;
     QLabel *label;
