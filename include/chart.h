@@ -34,21 +34,23 @@
 #include "freespace.h"
 #include <string>
 #include <iostream>
+#include <QTableView>
 
 #define PedSector long long
 QT_CHARTS_USE_NAMESPACE
 using namespace std;
 
-class DataChart
+class DataChart : public QObject
 {
 public:
-    DataChart(QTableView * tableView, DataParted *dataParted, DiskData *diskData, DataFreespace *dataFreespace, int index);
+    DataChart(QTableView *tableView, DataParted *dataParted, DiskData *diskData, DataFreespace *dataFreespace, int index);
     QPieSeries *series;
     QPieSlice *slice;
     QChartView *chartView;
     DataParted *dataParted;
     DataFreespace *dataFreespace;
     DiskData *diskData;
+    QTableView *tableViewSave;
     vector<vector<string>> *vecChart;
     void chartData(DataParted *dataPared, DiskData *diskData, DataFreespace *dataFreespace, int index);
     int countArray(int *array, int count);
