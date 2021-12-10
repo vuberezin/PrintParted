@@ -42,7 +42,7 @@ using namespace std;
 class DataChart
 {
 public:
-    DataChart( DataParted *dataParted, DiskData *diskData, DataFreespace *dataFreespace, int index);
+    DataChart(QTableView * tableView, DataParted *dataParted, DiskData *diskData, DataFreespace *dataFreespace, int index);
     QPieSeries *series;
     QPieSlice *slice;
     QChartView *chartView;
@@ -53,9 +53,15 @@ public:
     void chartData(DataParted *dataPared, DiskData *diskData, DataFreespace *dataFreespace, int index);
     int countArray(int *array, int count);
     string toString(float x);
+    string intToString(int  x);
+    void messageBox(QString str);
+    void delay();
 
     ~DataChart();
-
+    
+public slots:
+    void selected(QPieSlice *slice);
+    
 private:
     inline static bool first = true;
 
