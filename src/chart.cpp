@@ -154,7 +154,7 @@ void DataChart::selected(QPieSlice *slice){
 #include <QCoreApplication>
 void DataChart::delay()
 {
-    QTime dieTime= QTime::currentTime().addSecs(1);
+    QTime dieTime= QTime::currentTime().addMSecs(300);
     while (QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
