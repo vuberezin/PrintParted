@@ -38,7 +38,7 @@ class DialogContext : public QDialog
     Q_OBJECT
 
 public:
-    DialogContext( QWidget *parent, DataParted *dataParted, DiskData *diskdata,
+    DialogContext( QWidget *parent, QTableView * tableView, DataParted *dataParted, DiskData *diskdata,
                                             DataFreespace *dataFreespace,int row = -1);
     DataFreespace  *dataFreespace;
     DataChart *dataChart;
