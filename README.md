@@ -25,5 +25,3 @@ of each disk in percentage. Freespace is displaying after pressing Enter on sele
 
 *Alternatively, you can use previously created Makefile with following command: `make`*<br /> 
 
-
-https://user-images.githubusercontent.com/32239661/145565966-9eed075e-d218-4bfc-a303-98d28ed77221.mp4
