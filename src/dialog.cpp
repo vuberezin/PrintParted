@@ -21,13 +21,13 @@
 #include "include/dialog.h"
 
 
-Dialog::Dialog(QWidget *parent, DataParted *dataParted, DiskData *diskdata, DataFreespace *dataFreespace, int index) :
+Dialog::Dialog(QWidget *parent, QTableView * tableView, DataParted *dataParted, DiskData *diskdata, DataFreespace *dataFreespace, int index) :
     QDialog(parent)
 {
     //ui->setupUi(this);
     string device = diskdata->vecSave.at(index).at(0);    
     QGridLayout *layout = new QGridLayout;
-    dataChart = new DataChart( dataParted, diskdata, dataFreespace, index);
+    dataChart = new DataChart( tableView, dataParted, diskdata, dataFreespace, index);
     chartView = new QChartView();
     diskTableModel = new DiskTableModel;
     diskTableView = new QTableView;
