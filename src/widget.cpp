@@ -69,7 +69,7 @@ Widget::Widget(QWidget *parent) :
     comboBox->setModel(combomodel);
     comboBox->setStyleSheet("background-color: #F0E68C; color: #000000; border: 1px solid darkgray;\n"
                             " selection-background-color: #FFFFE0;");
-    dataChart = new DataChart( dataParted, diskData, dataFreespace, 0);
+    dataChart = new DataChart(tableView, dataParted, diskData, dataFreespace, 0);
     chartView = new QChartView();
     QSize size = this->size();
     chartView->resize(size.width()/1.1, size.height()/1.1);
@@ -135,7 +135,7 @@ void Widget::slotUpdate(const QItemSelection &selected, const QItemSelection &de
 
 void Widget::clickedAction(int index)
 {
-    dataChart = new DataChart(dataParted, diskData, dataFreespace, index);
+    dataChart = new DataChart(tableView, dataParted, diskData, dataFreespace, index);
     chartView->chart()->removeAllSeries();
     dataChart->series->setPieSize(0.6);
     chartView->chart()->addSeries(dataChart->series);
