@@ -173,7 +173,7 @@ void Widget::slotContextMenuRequested(QPoint pos)
 
 void Widget::slotShowFreespace()
 {
-    dialogContext = new DialogContext(this, dataParted, diskData, dataFreespace,
+    dialogContext = new DialogContext(this, tableView, dataParted, diskData, dataFreespace,
                                       diskTableView->selectionModel()->currentIndex().row());
     QSize size = this->size();
     dialogContext->resize(size.width()/1.1, size.height()/1.1);
@@ -184,7 +184,7 @@ void Widget::slotShowFreespace()
 
 void Widget::slotShowDiskInfo()
 {
-    dialog = new Dialog(this, dataParted, diskData, dataFreespace,
+    dialog = new Dialog(this, tableView, dataParted, diskData, dataFreespace,
                         diskTableView->selectionModel()->currentIndex().row());
     QSize size = this->size();
     dialog->resize(size.width()/1.1, size.height()/1.1);
@@ -215,7 +215,7 @@ void Widget::keyPressEvent(QKeyEvent *event)
     switch (event->key())
     {
     case Qt::Key_Return:
-        dialogContext = new DialogContext(this, dataParted, diskData, dataFreespace,
+        dialogContext = new DialogContext(this, tableView, dataParted, diskData, dataFreespace,
                                           diskTableView->selectionModel()->currentIndex().row());
         QSize size = this->size();
         dialogContext->resize(size.width()/1.1, size.height()/1.1);
