@@ -22,10 +22,12 @@
 
 
 
-DataChart::DataChart( DataParted *dataParted, DiskData *diskData, DataFreespace *dataFreespace, int index)
+DataChart::DataChart(QTableView * tableView, DataParted *dataParted, DiskData *diskData, DataFreespace *dataFreespace, int index)
 {
     //: QWidget(parent)
+    tableViewSave = tableView;
     chartData(dataParted, diskData, dataFreespace, index);
+    connect(series, &QPieSeries::clicked, this, &DataChart::selected);
 
 }
 
@@ -89,11 +91,8 @@ void DataChart::chartData(DataParted *dataParted, DiskData *diskData, DataFreesp
 
         i++;
         if(vecChart.at(i).at(2) != "logical" ){
-            QMessageBox msgBox;
-            msgBox.setText("You need to create a logical partition inside\n"
+            messageBox("You need to create a logical partition inside\n"
                            "the extended partition");
-            msgBox.setStyleSheet("QLabel {min-width: 300px;}");
-            msgBox.exec();
             return;
         }
         
@@ -113,20 +112,51 @@ void DataChart::chartData(DataParted *dataParted, DiskData *diskData, DataFreesp
     if(vecChart.at(i).at(2) == "extended"){
 
         i++;
-        string str = "Part" + vecChart.at(i).at(1) + " " + percentPartition + "%";
+        string str = intToString(i) + ":  Part" + vecChart.at(i).at(1) + " " + percentPartition + "%";
         slice = series->append(str.c_str(), percentPart);
         slice->setExploded();
         //slice->setLabelVisible();
 
     } else if(percentPart > 0){
 
-        string str = "Part" + vecChart.at(i).at(1) + " " + percentPartition + "%";
+        string str = intToString(i) + ":  Part" + vecChart.at(i).at(1) + " " + percentPartition + "%";
         slice = series->append(str.c_str(), percentPart);
         slice->setExploded();
         //slice->setLabelVisible();
     }
     }
 
+}
+
+void DataChart::messageBox(QString str){
+
+    QMessageBox msgBox;
+    msgBox.setText(str);
+    msgBox.setStyleSheet("QLabel{min-width: 300px;}");
+    msgBox.exec();
+}
+
+void DataChart::selected(QPieSlice *slice){
+    QString str = slice->label();
+    QString mas;
+    for (int i =0; i < 3; i++) {
+        if (str[i].isDigit())
+            mas += str[i];
+    }
+    tableViewSave->selectRow(mas.toInt());
+    QColor color =  slice->color();
+    slice->setColor(QColor(Qt::green));
+    delay();
+    slice->setColor(color);
+}
+
+#include <QTime>
+#include <QCoreApplication>
+void DataChart::delay()
+{
+    QTime dieTime= QTime::currentTime().addSecs(1);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 
 string DataChart::toString(float x)
@@ -138,6 +168,14 @@ string DataChart::toString(float x)
     return str;
 }
 
+string DataChart::intToString(int  x)
+{
+    string str;
+    stringstream stream;
+    stream << x;
+    str = stream.str();
+    return str;
+}
 
 int DataChart::countArray(int arr[], int count)
 {
