@@ -57,6 +57,7 @@ public:
     vector<vector<string>> partInfo (PedDevice *dev, PedDisk *disk, PedPartition *part);
     int countPart(PedDevice *dev, PedDisk *disk, PedPartition *part, string path);
     int countExtPart(PedDevice *dev, PedDisk *disk, PedPartition *part, string path);
+    string regexSearch(string str);
     string toString(long long x);
 
     ~DataParted();
