@@ -131,7 +131,8 @@ vector<vector<string>> DataParted::partInfo(PedDevice *dev, PedDisk *disk, PedPa
 
     vector<vector<string>> listVect; // = new vector<vector<string>*>();
     ped_device_probe_all();
-
+    string device;
+    string part_num;
     while ((dev = ped_device_get_next(dev))){
 
     disk = ped_disk_new(dev);
@@ -141,14 +142,14 @@ vector<vector<string>> DataParted::partInfo(PedDevice *dev, PedDisk *disk, PedPa
                   part = ped_disk_next_partition (disk, part)) {
 
         vector<string> vecList; // = new vector<string>();
+        device = dev->path;
         vecList.push_back(dev->path);
 
     if (part->type == PED_PARTITION_METADATA || !ped_partition_is_active(part))
                       continue;
 
     if (part->num >= 0){
-
-        string part_num;
+        
         part_num = toString(part->num);
         vecList.push_back(part_num);
     }
@@ -217,6 +218,9 @@ vector<vector<string>> DataParted::partInfo(PedDevice *dev, PedDisk *disk, PedPa
         vecList.push_back(" - ");
     }
 
+    string mount_point = regexSearch(device + part_num);
+    vecList.push_back(mount_point);
+        
     check_feature = ped_disk_type_check_feature (disk->type,
                                          PED_DISK_TYPE_PARTITION_NAME);
     if (check_feature){
@@ -257,6 +261,47 @@ vector<vector<string>> DataParted::partInfo(PedDevice *dev, PedDisk *disk, PedPa
     }
 
     return listVect;
+}
+
+#include <fstream>
+#include <regex>
+string DataParted::regexSearch(string str){
+
+std::ifstream ifstrm;
+string strSave, strSearch;
+string strError = " - ";
+std::smatch match;
+std::regex reg (".*" + str + ".*");
+
+ifstrm.open("/proc/mounts");
+    while (!ifstrm.eof()) {
+        getline(ifstrm, str);
+        if (regex_search(str, match, reg)){
+            strSave += match[0];
+             break;
+        }
+    }
+    
+    if(strSave.length() == 0){
+        return strError;
+     }
+    
+    vector<int> *vecI = new vector<int>();
+    string:: iterator it;
+    int i = 0;
+    for (it = strSave.begin(); it != strSave.end(); it++) {
+        i++;
+        if(*it == ' '){
+        vecI->push_back(i);
+    }
+    }
+
+    auto itv = vecI->begin();
+    for (int i = itv[0]; i != itv[1]; i++) {
+    strSearch += strSave[i];
+    }
+    
+    return strSearch;
 }
 
 
