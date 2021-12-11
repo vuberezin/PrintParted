@@ -28,7 +28,7 @@ TableModel::TableModel(DataParted *dataParted, QObject *parent) :
     dataVec.insert(dataVec.end(),dataParted->vecSave.begin(), dataParted->vecSave.end() );
     dataList.append(dTime->currentDateTime().toString());
     listSize = dataVec.size();
-    col = 12;
+    col = 13;
 
 }
 
@@ -118,10 +118,13 @@ QVariant TableModel::headerData(int part, Qt::Orientation orient, int role) cons
     case 9:
         return tr("File system");
 
-    case 10:
-       return tr("Part name");
+     case 10:
+        return tr("Mount point");
 
     case 11:
+       return tr("Part name");
+
+    case 12:
        return tr("Flags");
 
     default:
