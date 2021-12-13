@@ -12,27 +12,12 @@ of each disk in percentage. Freespace is displaying after pressing Enter on sele
 
 # *Libraries required for Ubuntu, Debian:*<br />
 
-*`libparted.so.2` *`libQt5Charts.so.5`*<br />
-*`libQt5Widgets.so.5`*<br />
-*`libQt5Gui.so.5`*<br />
-*`libQt5Core.so.5`*<br />
-*`libstdc++.so.6`*<br />
-*`libgcc_s.so.1`*<br />
-*`libc.so.6`*<br />
+*`libparted.so.2` *`libQt5Charts.so.5` *`libQt5Widgets.so.5` *`libQt5Gui.so.5` *`libQt5Core.so.5` *`libstdc++.so.6` *`libgcc_s.so.1` *`libc.so.6`*<br />
 
 # *Libraries required for Red Hat, Centos, Fedora:*<br />
 
-*`libparted.so.2`*<br />
-*`libQt5Charts.so.5`*<br />
-*`libQt5Widgets.so.5`*<br />
-*`libQt5Gui.so.5`*<br />
-*`libQt5Core.so.5`*<br />
-*`libGL.so.1`*<br />
-*`libpthread.so.0`*<br />
-*`libstdc++.so.6`*<br />
-*`libm.so.6`*<br />
-*`libgcc_s.so.1`*<br />
-*`libc.so.6`*<br />
+*`libparted.so.2` *`libQt5Charts.so.5` *`libQt5Widgets.so.5` *`libQt5Gui.so.5` *`libQt5Core.so.5` *`libGL.so.1` *`libpthread.so.0` *`libstdc++.so.6` *`libm.so.6`
+*`libgcc_s.so.1` *`libc.so.6`*<br />
  
  
 # *Building a Dynamically Linked Version*
