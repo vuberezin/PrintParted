@@ -10,21 +10,6 @@
 of each disk in percentage. Freespace is displaying after pressing Enter on selected row. Also, disk partitions and freespace are displaying in the context menu in table with description disks. In this case, freespace means space outside of already generated partitions and can be used to expand existing partition or create new one.* 
 
 
-# *Building a Dynamically Linked Version*
-
-*Using qt5-qmake to create Makefile*<br />
-*1.For Ubuntu, Debian you need to install: `sudo apt-get install libparted-dev`*<br />
-*`sudo apt-get install qt5-default`*<br /> 
-*for Red Hat, Centos, Fedora:  `yum install parted-dev` (for libparted)*<br />
-*`yum install qt5`*<br /> 
-*2.Extract the tarball*<br />
-*3.Run the following commands:*<br />
->*__qmake PrintParted.pro__*<br />
->*__make__* <br /> 
->*and find the file: PrintParted*<br />
-
-*Alternatively, you can use previously created Makefile with following command: `make`*<br /> 
-
 # *Libraries required for Ubuntu, Debian:*<br />
 
 *`libparted.so.2`*<br />
@@ -49,5 +34,20 @@ of each disk in percentage. Freespace is displaying after pressing Enter on sele
 *`libm.so.6`*<br />
 *`libgcc_s.so.1`*<br />
 *`libc.so.6`*<br />
+ 
+ 
+# *Building a Dynamically Linked Version*
 
+*Using qt5-qmake to create Makefile*<br />
+*1.For Ubuntu, Debian you need to install: `sudo apt-get install libparted-dev`*<br />
+*`sudo apt-get install qt5-default`*<br /> 
+*for Red Hat, Centos, Fedora:  `yum install parted-dev` (for libparted)*<br />
+*`yum install qt5`*<br /> 
+*2.Extract the tarball*<br />
+*3.Run the following commands:*<br />
+>*__qmake PrintParted.pro__*<br />
+>*__make__* <br /> 
+>*and find the file: PrintParted*<br />
+
+*Alternatively, you can use previously created Makefile with following command: `make`*<br /> 
 
