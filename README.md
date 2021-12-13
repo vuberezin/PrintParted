@@ -12,8 +12,7 @@ of each disk in percentage. Freespace is displaying after pressing Enter on sele
 
 # *Libraries required for Ubuntu, Debian:*<br />
 
-*`libparted.so.2`*<br />
-*`libQt5Charts.so.5`*<br />
+*`libparted.so.2` *`libQt5Charts.so.5`*<br />
 *`libQt5Widgets.so.5`*<br />
 *`libQt5Gui.so.5`*<br />
 *`libQt5Core.so.5`*<br />
