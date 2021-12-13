@@ -13,15 +13,12 @@ of each disk in percentage. Freespace is displaying after pressing Enter on sele
 # *Building a Dynamically Linked Version*
 
 *Libraries required for Ubuntu, Debian:*<br />
-
 `libparted.so.2` `libQt5Charts.so.5` `libQt5Widgets.so.5` `libQt5Gui.so.5` `libQt5Core.so.5` `libstdc++.so.6` `libgcc_s.so.1` `libc.so.6`<br />
 
-
 *Libraries required for Red Hat, Centos, Fedora:*<br />
-
 `libparted.so.2` `libQt5Charts.so.5` `libQt5Widgets.so.5` `libQt5Gui.so.5` `libQt5Core.so.5` `libGL.so.1` `libpthread.so.0` `libstdc++.so.6` `libm.so.6`
 `libgcc_s.so.1` `libc.so.6`<br />
- 
+
 *Using qt5-qmake to create Makefile*<br />
 *1.For Ubuntu, Debian you need to install: `sudo apt-get install libparted-dev`*<br />
 *`sudo apt-get install qt5-default`*<br /> 
