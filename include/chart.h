@@ -51,6 +51,7 @@ public:
     DataFreespace *dataFreespace;
     DiskData *diskData;
     QTableView *tableViewSave;
+    QColor color;
     vector<vector<string>> *vecChart;
     void chartData(DataParted *dataPared, DiskData *diskData, DataFreespace *dataFreespace, int index);
     int countArray(int *array, int count);
@@ -63,6 +64,7 @@ public:
     
 public slots:
     void selected(QPieSlice *slice);
+    void deselected(QPieSlice *slice);
     
 private:
     inline static bool first = true;
