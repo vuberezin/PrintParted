@@ -27,7 +27,8 @@ DataChart::DataChart(QTableView * tableView, DataParted *dataParted, DiskData *d
     //: QWidget(parent)
     tableViewSave = tableView;
     chartData(dataParted, diskData, dataFreespace, index);
-    connect(series, &QPieSeries::clicked, this, &DataChart::selected);
+    connect(series, &QPieSeries::pressed, this, &DataChart::selected);
+    connect(series, &QPieSeries::released, this, &DataChart::deselected);
 
 }
 
@@ -144,9 +145,12 @@ void DataChart::selected(QPieSlice *slice){
             mas += str[i];
     }
     tableViewSave->selectRow(mas.toInt());
-    QColor color =  slice->color();
+    color =  slice->color();
     slice->setColor(QColor(Qt::green));
-    delay();
+    //delay();
+}
+
+void DataChart::deselected(QPieSlice *slice){
     slice->setColor(color);
 }
 
