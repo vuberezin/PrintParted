@@ -221,6 +221,15 @@ vector<vector<string>> DataParted::partInfo(PedDevice *dev, PedDisk *disk, PedPa
     string mount_point = regexSearch(device + part_num);
     vecList.push_back(mount_point);
         
+    mount_point.pop_back();
+    int size_dir = getSizeDir(mount_point);
+    if(size_dir == 0){
+        vecList.push_back(" - ");
+    }
+    else {
+        vecList.push_back(toString(size_dir / 1024) + "MB");
+    }
+        
     check_feature = ped_disk_type_check_feature (disk->type,
                                          PED_DISK_TYPE_PARTITION_NAME);
     if (check_feature){
@@ -304,6 +313,63 @@ ifstrm.open("/proc/mounts");
     return strSearch;
 }
 
+#include <stdio.h>
+#include <dirent.h>
+#include <sys/stat.h>
+#include <stdlib.h>
+#include <errno.h>
+
+int DataParted::getSizeDir(string spath)
+{ 
+    const char *path = spath.c_str();
+    struct dirent *pdirent;
+    struct stat st;
+    int result = 0;
+    DIR *pdir;
+
+    pdir = opendir(path);
+    while (pdir != NULL &&  errno != EACCES && (pdirent = readdir(pdir)) != NULL){
+
+        if(strcmp(pdirent->d_name,".") == 0 || strcmp(pdirent->d_name,"..") == 0)
+            continue;
+
+        char *str = (char*) malloc(strlen(path) + strlen(pdirent->d_name) + 2);
+        strcpy(str,path);
+        if( str[strlen(str)-1] != '/')
+            strcat(str, "/");
+        strcat(str,pdirent->d_name);
+        
+        lstat(str, &st);
+        if(S_ISDIR(st.st_mode)){
+            int temp = getSizeDir(str);
+            if (temp != -1){
+                result += temp;
+            }
+        }
+
+        else if(getSizePath(str) != -1)
+            result += getSizePath(str);
+            free(str);
+    }
+
+    if (errno == EACCES){
+        errno = 0;
+        result = -1;
+    }
+
+    closedir(pdir);
+    return result;
+}
+
+int DataParted::getSizePath(const char *path)
+{
+    struct stat st;
+    lstat(path, &st);
+    if (!S_ISREG(st.st_mode)){
+        return -1;
+    }
+    return st.st_size / 1024 ;
+}
 
 string DataParted::toString(long long x)
 {
