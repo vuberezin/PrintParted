@@ -59,6 +59,8 @@ public:
     int countExtPart(PedDevice *dev, PedDisk *disk, PedPartition *part, string path);
     string regexSearch(string str);
     string toString(long long x);
+    int getSizeDir (string spath);
+    int getSizePath (const char *path);
 
     ~DataParted();
 
