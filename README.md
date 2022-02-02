@@ -7,7 +7,7 @@
 # *Basic Functionality*
 
 *This contains two tables with description disks and partitions of each disk. Pie chart contains information about disk partitions and freespace 
-of each disk in percentage. Freespace is displaying after pressing Enter on selected row. Also, disk partitions and freespace are displaying in the context menu in table with description disks. In this case, freespace means space outside of already generated partitions and can be used to expand existing partition or create new one.* 
+of each disk in percentage. Charts are clickable and using them gives the result is viewing selected rows associated with selected disk. Freespace is displaying after pressing Enter on selected row. Also, disk partitions and freespace are displaying in the context menu in table with description disks. In this case, freespace means space outside of already generated partitions and can be used to expand existing partition or create new one.* 
 
 
 *Libraries required for Ubuntu, Debian:*<br />
