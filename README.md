@@ -26,7 +26,7 @@ of each disk in percentage. Charts are clickable and display the selected partit
 *`sudo apt-get install qt5-default`*<br /> 
 For Red Hat, Centos, Fedora:  `yum install parted-dev` <br />
 *`yum install qt5`*<br /> 
-*2.Extract the tarball*<br />
+*2.Download and extract the tarball*<br />
 *3.Run the following commands:*<br />
 >*__qmake PrintParted.pro__*<br />
 >*__make__* <br /> 
