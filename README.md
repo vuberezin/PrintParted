@@ -20,7 +20,8 @@ of each disk in percentage. Charts are clickable and display the selected partit
 
 # *Building a Dynamically Linked Version*
 
-*You need to install Libparted and use qt5-qmake to create Makefile. Below are some steps to create an executable file.*<br />
+*You need to install Libparted and use qt5-qmake to create Makefile.*<br /> 
+*Below are some steps to create an executable file.*<br />
 *1.For Ubuntu, Debian you need to install: `sudo apt-get install libparted-dev`*<br />
 *`sudo apt-get install qt5-default`*<br /> 
 *for Red Hat, Centos, Fedora:  `yum install parted-dev` *<br />
